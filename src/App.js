@@ -17,8 +17,9 @@ function App() {
     return (
         <div>
             <header className="mainHeader">
-                <h1>Planit</h1>
+                <h1>PLANIT</h1>
             </header>
+            <div className="banner"></div>
             <Events events={events} />
         </div>
     );
