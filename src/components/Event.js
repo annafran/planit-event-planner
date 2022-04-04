@@ -1,14 +1,17 @@
+import CardImage from "./CardImage";
+
 const Event = ({ name, url, image, info }) => {
     console.log({ info });
 
     return (
         <div>
             <li className="eventCard">
-                <div className="cardImageContainer">
+                <CardImage src={image} name={name} />
+                {/* <div className="cardImageContainer">
                     <figure className="cardImage">
                         <img src={image} alt={name} />
                     </figure>
-                </div>
+                </div> */}
                 <div className="cardContent">
                     <div className="cardText">
                         <p className="cardName">{name}</p>
