@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState, useEffect } from "react";
+import "./App.css";
+import Events from "./components/Events";
+import { getEvents } from "./services/getEvents";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        const loadData = async () => {
+            setEvents(await getEvents());
+        };
+
+        loadData();
+    }, []);
+
+    return (
+        <div className="app">
+            <header className="app-header">
+                <h1>EventMe</h1>
+            </header>
+            <Events events={events} />
+        </div>
+    );
 }
 
 export default App;
