@@ -2,6 +2,19 @@ import { React, useState, useEffect } from "react";
 import "./App.css";
 import Events from "./components/Events";
 import getEvents from "./services/getEvents";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#7796CB",
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: "#A3BCF9",
+        },
+    },
+});
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -25,4 +38,12 @@ function App() {
     );
 }
 
-export default App;
+const AppWrapper = () => {
+    return (
+        <ThemeProvider theme={theme}>
+            <App />
+        </ThemeProvider>
+    );
+};
+
+export default AppWrapper;
