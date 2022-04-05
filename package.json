@@ -3,6 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@emotion/react": "^11.8.2",
+        "@emotion/styled": "^11.8.1",
+        "@mui/material": "^5.5.3",
+        "@mui/styled-engine-sc": "^5.5.2",
         "@radix-ui/colors": "^0.1.8",
         "@radix-ui/react-aspect-ratio": "^0.1.4",
         "@stitches/react": "^1.2.7",
@@ -13,6 +17,7 @@
         "react": "17.0",
         "react-dom": "17.0",
         "react-scripts": "5.0.0",
+        "styled-components": "^5.3.5",
         "stylelint": "^14.1.0",
         "stylelint-config-recommended": "^6.0.0",
         "web-vitals": "^2.1.4"

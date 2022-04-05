@@ -2,7 +2,7 @@
 
 body {
     background-color: #c9cad9;
-    font-family: "Lato", sans-serif;
+    font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -27,14 +27,17 @@ body {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    /* grid-auto-rows: min-content; */
 }
 
 .eventCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto;
     border-radius: 0.125rem;
     background-color: white;
-    width: 80%;
+    width: 100%;
     color: black;
 }
 

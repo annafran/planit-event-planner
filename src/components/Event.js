@@ -1,4 +1,6 @@
 import CardImage from "./CardImage";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const Event = ({ name, url, image, info }) => {
     console.log({ info });
@@ -7,23 +9,14 @@ const Event = ({ name, url, image, info }) => {
         <div>
             <li className="eventCard">
                 <CardImage src={image} name={name} />
-                {/* <div className="cardImageContainer">
-                    <figure className="cardImage">
-                        <img src={image} alt={name} />
-                    </figure>
-                </div> */}
                 <div className="cardContent">
                     <div className="cardText">
-                        <p className="cardName">{name}</p>
-                        <a className="cardUrl" href={url}>
-                            event page
-                        </a>
+                        <Typography variant="h5" gutterBottom="true" className="cardName">{name}</Typography>
                     </div>
-                    <div className="cardDetails">
-                        {info}
-                        <br></br>
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    </div>
+                    <Typography variant="caption" className="cardDetails">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat non cupidis vitae culpa dolorem dicta explicabo a.</Typography>
+                    <Button variant="contained" color="secondary" href={url}>
+                        Find out more
+                    </Button>
                 </div>
             </li>
         </div>
