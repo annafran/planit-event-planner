@@ -50,7 +50,7 @@ const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
                     {name}
                 </Box>
 
-                <Box>from: ${minPrice}</Box>
+                <Box>from: {minPrice} EUR</Box>
                 <Button variant="solid" size="sm" bg="babyBlueEyes">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>
                 </Button>
