@@ -1,4 +1,3 @@
-// import CardImage from "./CardImage";
 import {
     Button,
     LinkOverlay,

@@ -1,5 +1,12 @@
 import { React, useState, useEffect } from "react";
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import {
+    extendTheme,
+    ChakraProvider,
+    Image,
+    Box,
+    Heading,
+    Container,
+} from "@chakra-ui/react";
 import "./App.css";
 import Events from "./components/Events";
 import getEvents from "./services/getEvents";
@@ -27,10 +34,19 @@ const App = () => {
 
     return (
         <ChakraProvider theme={theme}>
-            <header className="mainHeader">
-                <h1>PLANIT</h1>
-            </header>
-            <div className="banner"></div>
+            <Box p="0.2rem" bg="lavenderBlue">
+                <Heading as="h2" size="3xl">
+                    PLANIT
+                </Heading>
+            </Box>
+            <Box w="100%" h="16rem">
+                <Image
+                    objectFit="cover"
+                    boxSize="100%"
+                    src="med-mhamdi-mH_E0K581Yk-unsplash.jpg"
+                    alt="club photo"
+                />
+            </Box>
             <Events events={events} />
         </ChakraProvider>
     );

@@ -1,5 +1,5 @@
 import Event from "./Event";
-import { SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid, Container } from "@chakra-ui/react";
 
 const Events = ({ events }) => {
     return (
