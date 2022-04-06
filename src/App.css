@@ -20,34 +20,33 @@ body {
     margin-bottom: 2rem;
 }
 
-.eventGrid {
+/* .eventGrid {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
-    /* grid-auto-rows: min-content; */
-}
+} */
 
-.eventCard {
+/* .eventCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 0 auto;
     border-radius: 0.125rem;
     background-color: white;
     width: 100%;
     color: black;
-}
+} */
 
-.cardImageContainer {
+/* .cardImageContainer {
     width: 100%;
     height: auto;
-}
-
+} */
+/* 
 .cardContent {
     padding: 2rem;
-}
+} */
 
-.cardImage {
+/* .cardImage {
     width: 100%;
     height: auto;
-}
+} */

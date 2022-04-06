@@ -5,13 +5,11 @@ import Events from "./components/Events";
 import getEvents from "./services/getEvents";
 
 const colors = {
-    brand: {
-        lavenderGray: "#C9CAD9",
-        lavenderBlue: "#D1D2F9",
-        babyBlueEyes: "#A3BCF9",
-        blueGray: "#7796CB",
-        darkBlueGray: "#576490",
-    },
+    lavenderGray: "#C9CAD9",
+    lavenderBlue: "#D1D2F9",
+    babyBlueEyes: "#A3BCF9",
+    blueGray: "#7796CB",
+    darkBlueGray: "#576490",
 };
 
 const theme = extendTheme({ colors });
