@@ -6,11 +6,11 @@ const Toolbar = () => {
             <Stack direction="row">
                 <Select
                     placeholder="Select city"
-                    mt="1.5rem"
-                    ml="1.5rem"
+                    mt="2rem"
+                    ml="2rem"
                     w="10rem"
-                    bg="babyBlueEyes"
-                    borderColor="babyBlueEyes"
+                    bg="aquamarine"
+                    borderColor="mediumTurquoise"
                     variant="filled"
                 >
                     <option value="option1">Barcelona</option>
@@ -18,7 +18,7 @@ const Toolbar = () => {
                     <option value="option3">Santiago de Compostela</option>
                 </Select>
                 <RadioGroup>
-                    <Stack direction="row">
+                    <Stack direction="row" mt="2rem" ml="1rem">
                         <Radio value="1">Price: low to high</Radio>
                         <Radio value="2">Price: high to low</Radio>
                     </Stack>

@@ -7,13 +7,24 @@ import {
     AspectRatio,
 } from "@chakra-ui/react";
 
-const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
+const Event = ({
+    name,
+    url,
+    image,
+    info,
+    minPrice,
+    genre,
+    city,
+    country,
+    currency,
+    startDate,
+}) => {
     console.log({ info });
 
     return (
         <Box
             maxW="sm"
-            height="25rem"
+            height="fit-content"
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
@@ -25,7 +36,7 @@ const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
 
             <Box p="6">
                 <Box display="flex" alignItems="baseline">
-                    <Badge borderRadius="full" px="2" bg="lavenderBlue">
+                    <Badge borderRadius="full" px="2" bg="turquoise">
                         {genre}
                     </Badge>
                     <Box
@@ -50,7 +61,10 @@ const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
                     {name}
                 </Box>
 
-                <Box>from: {minPrice} EUR</Box>
+                <Box>
+                    Price from: {minPrice} {currency}
+                </Box>
+                <Box>Start date: {startDate}</Box>
                 <Button variant="solid" size="sm" bg="babyBlueEyes">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>
                 </Button>
