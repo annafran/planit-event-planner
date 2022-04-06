@@ -1,19 +1,11 @@
 import { React, useState, useEffect } from "react";
-import {
-    extendTheme,
-    ChakraProvider,
-    Image,
-    Box,
-    Heading,
-    Input,
-    InputGroup,
-    InputLeftElement,
-} from "@chakra-ui/react";
-import { Search2Icon } from "@chakra-ui/icons";
-import "./App.css";
-import Events from "./components/Events";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+
 import getEvents from "./services/getEvents";
+import Header from "./components/Header";
+import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
+import Events from "./components/Events";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -56,40 +48,8 @@ const App = () => {
 
     return (
         <ChakraProvider theme={theme}>
-            <Box p="0.2rem" bg="blue.400" color="aquamarine">
-                <Heading as="h2" size="2xl" ml="2rem" mt="0.5rem" mb="0.5rem">
-                    PLANIT
-                </Heading>
-            </Box>
-
-            <Box w="100%" h="16rem" pos="relative">
-                <Image
-                    objectFit="cover"
-                    boxSize="100%"
-                    src="med-mhamdi-mH_E0K581Yk-unsplash.jpg"
-                    alt="club photo"
-                />
-                <InputGroup
-                    pos="absolute"
-                    size="lg"
-                    w="40%"
-                    top="40%"
-                    left="30%"
-                    zIndex={2}
-                >
-                    <InputLeftElement
-                        pointerEvents="none"
-                        children={<Search2Icon color="gray" />}
-                    />
-
-                    <Input
-                        placeholder="Search for an event"
-                        leftIcon={<Search2Icon />}
-                        variant="filled"
-                        focusBorderColor="babyBlueEyes"
-                    />
-                </InputGroup>
-            </Box>
+            <Header />
+            <Banner />
             <Toolbar />
             <Events events={events} />
         </ChakraProvider>
