@@ -52,7 +52,7 @@ const Event = ({
                 </Box>
 
                 <Box
-                    mt="1"
+                    mt="1rem"
                     fontWeight="semibold"
                     as="h4"
                     lineHeight="tight"
@@ -65,7 +65,7 @@ const Event = ({
                     Price from: {minPrice} {currency}
                 </Box>
                 <Box>Start date: {startDate}</Box>
-                <Button variant="solid" size="sm" bg="babyBlueEyes">
+                <Button variant="solid" size="sm" bg="babyBlueEyes" mt="1rem">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>
                 </Button>
             </Box>

@@ -1,13 +1,17 @@
-import { Select, Radio, Stack, RadioGroup } from "@chakra-ui/react";
+import { Select, Radio, Stack, RadioGroup, Flex, Box } from "@chakra-ui/react";
 
 const Toolbar = () => {
     return (
         <>
-            <Stack direction="row">
+            <Stack
+                display="flex"
+                direction="row"
+                justifyContent="end"
+                mt="2rem"
+            >
                 <Select
                     placeholder="Select city"
-                    mt="2rem"
-                    ml="2rem"
+                    mr="2rem"
                     w="10rem"
                     bg="aquamarine"
                     borderColor="mediumTurquoise"
@@ -17,8 +21,8 @@ const Toolbar = () => {
                     <option value="option2">Madrid</option>
                     <option value="option3">Santiago de Compostela</option>
                 </Select>
-                <RadioGroup>
-                    <Stack direction="row" mt="2rem" ml="1rem">
+                <RadioGroup display="flex" direction="column">
+                    <Stack direction="row" mr="2rem" justifyContent="center">
                         <Radio value="1">Price: low to high</Radio>
                         <Radio value="2">Price: high to low</Radio>
                     </Stack>

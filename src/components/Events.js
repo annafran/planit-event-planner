@@ -1,5 +1,5 @@
 import Event from "./Event";
-import { SimpleGrid, Grid, Box, useMediaQuery } from "@chakra-ui/react";
+import { Grid, Box } from "@chakra-ui/react";
 
 const Events = ({ events }) => {
     return (
