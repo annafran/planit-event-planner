@@ -1,10 +1,19 @@
 import Event from "./Event";
-import { SimpleGrid, Box } from "@chakra-ui/react";
+import { SimpleGrid, Grid, Box, useMediaQuery } from "@chakra-ui/react";
 
 const Events = ({ events }) => {
     return (
         <Box m="2rem">
-            <SimpleGrid minChildWidth="20rem" spacing="2rem">
+            <Grid
+                templateColumns={[
+                    "1fr",
+                    "repeat(2, 1fr)",
+                    "repeat(3, 1fr)",
+                    "repeat(4, 1fr)",
+                ]}
+                gap={6}
+                templateRows="auto"
+            >
                 {events.map((event) => (
                     <Event
                         key={event.id}
@@ -24,7 +33,7 @@ const Events = ({ events }) => {
                         startDate={event.dates.start.localDate}
                     />
                 ))}
-            </SimpleGrid>
+            </Grid>
         </Box>
     );
 };
