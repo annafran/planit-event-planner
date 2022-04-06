@@ -17,8 +17,9 @@ const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
+            bg="white"
         >
-            <AspectRatio maxW="25rem" ratio={4 / 3}>
+            <AspectRatio maxW="30rem" ratio={4 / 3}>
                 <Image src={image} alt={name} />
             </AspectRatio>
 

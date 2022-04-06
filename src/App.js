@@ -5,11 +5,13 @@ import {
     Image,
     Box,
     Heading,
-    Container,
+    Menu,
+    MenuButton,
 } from "@chakra-ui/react";
 import "./App.css";
 import Events from "./components/Events";
 import getEvents from "./services/getEvents";
+import Toolbar from "./components/Toolbar";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -19,7 +21,15 @@ const colors = {
     darkBlueGray: "#576490",
 };
 
-const theme = extendTheme({ colors });
+const styles = {
+    global: {
+        body: {
+            bg: "lavenderGray",
+        },
+    },
+};
+
+const theme = extendTheme({ colors, styles });
 
 const App = () => {
     const [events, setEvents] = useState([]);
@@ -39,6 +49,7 @@ const App = () => {
                     PLANIT
                 </Heading>
             </Box>
+
             <Box w="100%" h="16rem">
                 <Image
                     objectFit="cover"
@@ -47,6 +58,7 @@ const App = () => {
                     alt="club photo"
                 />
             </Box>
+            <Toolbar />
             <Events events={events} />
         </ChakraProvider>
     );
