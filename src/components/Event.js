@@ -1,6 +1,7 @@
 import CardImage from "./CardImage";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Button } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+import { LinkOverlay } from "@chakra-ui/react";
 
 const Event = ({ name, url, image, info }) => {
     console.log({ info });
@@ -11,11 +12,10 @@ const Event = ({ name, url, image, info }) => {
                 <CardImage src={image} name={name} />
                 <div className="cardContent">
                     <div className="cardText">
-                        <Typography variant="h5" gutterBottom="true" className="cardName">{name}</Typography>
+                        <Text fontSize="lg">{name}</Text>
                     </div>
-                    <Typography variant="caption" className="cardDetails">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quaerat non cupidis vitae culpa dolorem dicta explicabo a.</Typography>
-                    <Button variant="contained" color="secondary" href={url}>
-                        Find out more
+                    <Button variant="solid" size="sm" bg="brand.babyBlueEyes">
+                        <LinkOverlay href={url}>Find out more</LinkOverlay>
                     </Button>
                 </div>
             </li>

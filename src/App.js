@@ -1,22 +1,22 @@
 import { React, useState, useEffect } from "react";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import "./App.css";
 import Events from "./components/Events";
 import getEvents from "./services/getEvents";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#7796CB",
-        },
-        secondary: {
-            // This is green.A700 as hex.
-            main: "#A3BCF9",
-        },
+const colors = {
+    brand: {
+        lavenderGray: "#C9CAD9",
+        lavenderBlue: "#D1D2F9",
+        babyBlueEyes: "#A3BCF9",
+        blueGray: "#7796CB",
+        darkBlueGray: "#576490",
     },
-});
+};
 
-function App() {
+const theme = extendTheme({ colors });
+
+const App = () => {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
@@ -28,22 +28,14 @@ function App() {
     }, []);
 
     return (
-        <div>
+        <ChakraProvider theme={theme}>
             <header className="mainHeader">
                 <h1>PLANIT</h1>
             </header>
             <div className="banner"></div>
             <Events events={events} />
-        </div>
-    );
-}
-
-const AppWrapper = () => {
-    return (
-        <ThemeProvider theme={theme}>
-            <App />
-        </ThemeProvider>
+        </ChakraProvider>
     );
 };
 
-export default AppWrapper;
+export default App;
