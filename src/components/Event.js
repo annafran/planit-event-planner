@@ -7,6 +7,8 @@ import {
     AspectRatio,
 } from "@chakra-ui/react";
 
+import formattedDate from "../utils/formattedDate";
+
 const Event = ({
     name,
     url,
@@ -36,7 +38,7 @@ const Event = ({
 
             <Box p="6">
                 <Box display="flex" alignItems="baseline">
-                    <Badge borderRadius="full" px="2" bg="turquoise">
+                    <Badge borderRadius="full" px="2" bg="teal.200">
                         {genre}
                     </Badge>
                     <Box
@@ -64,7 +66,7 @@ const Event = ({
                 <Box>
                     Price from: {minPrice} {currency}
                 </Box>
-                <Box>Start date: {startDate}</Box>
+                <Box>Start date: {formattedDate(startDate)}</Box>
                 <Button variant="solid" size="sm" bg="babyBlueEyes" mt="1rem">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>
                 </Button>

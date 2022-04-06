@@ -5,9 +5,11 @@ import {
     Image,
     Box,
     Heading,
-    Menu,
-    MenuButton,
+    Input,
+    InputGroup,
+    InputLeftElement,
 } from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
 import "./App.css";
 import Events from "./components/Events";
 import getEvents from "./services/getEvents";
@@ -28,12 +30,13 @@ const colors = {
     frenchViolet: "#6930C3",
     purple: "#7400B8",
     slateBlue: "#5E60CE",
+    lavenderWeb: "#D8E3FD",
 };
 
 const styles = {
     global: {
         body: {
-            bg: "lavenderGray",
+            bg: "lavenderWeb",
         },
     },
 };
@@ -53,19 +56,39 @@ const App = () => {
 
     return (
         <ChakraProvider theme={theme}>
-            <Box p="0.2rem" bg="darkBlueGray" color="aquamarine">
+            <Box p="0.2rem" bg="blue.400" color="aquamarine">
                 <Heading as="h2" size="2xl" ml="2rem" mt="0.5rem" mb="0.5rem">
                     PLANIT
                 </Heading>
             </Box>
 
-            <Box w="100%" h="16rem">
+            <Box w="100%" h="16rem" pos="relative">
                 <Image
                     objectFit="cover"
                     boxSize="100%"
                     src="med-mhamdi-mH_E0K581Yk-unsplash.jpg"
                     alt="club photo"
                 />
+                <InputGroup
+                    pos="absolute"
+                    size="lg"
+                    w="40%"
+                    top="40%"
+                    left="30%"
+                    zIndex={2}
+                >
+                    <InputLeftElement
+                        pointerEvents="none"
+                        children={<Search2Icon color="gray" />}
+                    />
+
+                    <Input
+                        placeholder="Search for an event"
+                        leftIcon={<Search2Icon />}
+                        variant="filled"
+                        focusBorderColor="babyBlueEyes"
+                    />
+                </InputGroup>
             </Box>
             <Toolbar />
             <Events events={events} />
