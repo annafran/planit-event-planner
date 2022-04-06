@@ -2,7 +2,6 @@ import Event from "./Event";
 import { SimpleGrid } from "@chakra-ui/react";
 
 const Events = ({ events }) => {
-    console.log({ events });
     return (
         <SimpleGrid minChildWidth="20rem" spacing="2rem">
             {events.map((event) => (

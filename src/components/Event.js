@@ -5,7 +5,7 @@ import {
     Box,
     Badge,
     Image,
-    SimpleGrid,
+    AspectRatio,
 } from "@chakra-ui/react";
 
 const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
@@ -19,7 +19,9 @@ const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
             borderRadius="lg"
             overflow="hidden"
         >
-            <Image src={image} alt={name} />
+            <AspectRatio maxW="25rem" ratio={4 / 3}>
+                <Image src={image} alt={name} />
+            </AspectRatio>
 
             <Box p="6">
                 <Box display="flex" alignItems="baseline">
@@ -54,20 +56,6 @@ const Event = ({ name, url, image, info, minPrice, genre, city, country }) => {
                 </Button>
             </Box>
         </Box>
-
-        // <div>
-        //     <li className="eventCard">
-        //         <CardImage src={image} name={name} />
-        //         <div className="cardContent">
-        //             <div className="cardText">
-        //                 <Text fontSize="lg">{name}</Text>
-        //             </div>
-        //             <Button variant="solid" size="sm" bg="brand.babyBlueEyes">
-        //                 <LinkOverlay href={url}>Find out more</LinkOverlay>
-        //             </Button>
-        //         </div>
-        //     </li>
-        // </div>
     );
 };
 
