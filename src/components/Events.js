@@ -33,6 +33,7 @@ const Events = ({ events }) => {
                         startDate={event.dates.start.localDate}
                     />
                 ))}
+                })
             </Grid>
         </Box>
     );
