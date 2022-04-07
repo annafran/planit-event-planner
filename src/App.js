@@ -26,6 +26,7 @@ const colors = {
     lavenderWeb: "#D8E3FD",
     razzmatazz: "#EC096F",
     steelPink: "#D91CBC",
+    violetWeb: "#EF81DE",
 };
 
 const styles = {

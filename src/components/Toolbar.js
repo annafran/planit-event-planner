@@ -1,59 +1,85 @@
-import { Select, Radio, Stack, RadioGroup } from "@chakra-ui/react";
+import { Select, Grid, GridItem } from "@chakra-ui/react";
 
 const Toolbar = () => {
     return (
         <>
-            <Stack
-                display="flex"
-                direction="row"
-                justifyContent="end"
+            <Grid
+                display="grid"
+                gap="1rem"
                 mt="2rem"
+                mr="2rem"
+                ml="2rem"
+                templateColumns={[
+                    "repeat(2, 1fr)",
+                    "null",
+                    "repeat(4, 1fr)",
+                    "null",
+                    "repeat(8, 1fr)",
+                ]}
+                justifyItems="center"
             >
-                <Select
-                    placeholder="Select city"
-                    mr="0.5rem"
-                    w="10rem"
-                    bg="steelPink"
-                    color="white"
-                    variant="filled"
+                <GridItem
+                    colStart={[1, 1, 1, 1, 5]}
+                    colEnd={[2, 2, 2, 2, 6]}
+                    w="100%"
                 >
-                    <option value="option1">Barcelona</option>
-                    <option value="option2">Madrid</option>
-                    <option value="option3">Santiago de Compostela</option>
-                </Select>
-                <Select
-                    placeholder="Select date"
-                    mr="0.5rem"
-                    w="10rem"
-                    bg="steelPink"
-                    color="white"
-                    variant="filled"
-                >
-                    <option value="today">Today</option>
-                    <option value="tomorrow">Tomorrow</option>
-                    <option value="thisWeekend">This weekend</option>
-                    <option value="customDate">Pick a date</option>
-                </Select>
-                <Select
-                    placeholder="Select genre"
-                    mr="0.5rem"
-                    w="10rem"
-                    bg="steelPink"
-                    color="white"
-                    variant="filled"
-                >
-                    <option value="music">Music</option>
-                    <option value="film">Film</option>
-                    <option value="thisWeekend">This weekend</option>
-                    <option value="customDate">Pick a date</option>
-                </Select>
-                <RadioGroup display="flex" direction="column">
-                    <Stack direction="column" mr="2rem" justifyContent="center">
-                        <Radio value="1">Price: low to high</Radio>
-                        <Radio value="2">Price: high to low</Radio>
-                    </Stack>
-                </RadioGroup>
-            </Stack>
+                    <Select
+                        placeholder="Select city"
+                        bg="steelPink"
+                        color="white"
+                        variant="filled"
+                        _hover={{ bg: "violetWeb" }}
+                        _focus={{ bg: "violetWeb" }}
+                    >
+                        <option value="option1">Barcelona</option>
+                        <option value="option2">Madrid</option>
+                        <option value="option3">Santiago de Compostela</option>
+                    </Select>
+                </GridItem>
+                <GridItem w="100%">
+                    <Select
+                        placeholder="Select date"
+                        bg="steelPink"
+                        color="white"
+                        variant="filled"
+                        _hover={{ bg: "violetWeb" }}
+                        _focus={{ bg: "violetWeb" }}
+                    >
+                        <option value="today">Today</option>
+                        <option value="tomorrow">Tomorrow</option>
+                        <option value="thisWeekend">This weekend</option>
+                        <option value="customDate">Pick a date</option>
+                    </Select>
+                </GridItem>
+                <GridItem w="100%">
+                    <Select
+                        placeholder="Select genre"
+                        bg="steelPink"
+                        color="white"
+                        variant="filled"
+                        _hover={{ bg: "violetWeb" }}
+                        _focus={{ bg: "violetWeb" }}
+                    >
+                        <option value="music">Music</option>
+                        <option value="film">Film</option>
+                        <option value="thisWeekend">This weekend</option>
+                        <option value="customDate">Pick a date</option>
+                    </Select>
+                </GridItem>
+                <GridItem w="100%">
+                    <Select
+                        placeholder="Sort by"
+                        bg="steelPink"
+                        color="white"
+                        variant="filled"
+                        _hover={{ bg: "violetWeb" }}
+                        _focus={{ bg: "violetWeb" }}
+                    >
+                        <option value="low">Price: low to high</option>
+                        <option value="high">Price: high to low</option>
+                    </Select>
+                </GridItem>
+            </Grid>
         </>
     );
 };
