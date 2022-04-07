@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import formattedDate from "../utils/formattedDate";
-import todayDate from "../utils/todayDate";
+import dateToday from "../utils/dateToday";
 
 const Event = ({
     name,
@@ -22,8 +22,6 @@ const Event = ({
     currency,
     startDate,
 }) => {
-    console.log(":", todayDate());
-
     return (
         <Box
             maxW="sm"
@@ -69,7 +67,7 @@ const Event = ({
                 </Box>
                 <Box>
                     Start date:{" "}
-                    {startDate === todayDate()
+                    {dateToday() === formattedDate(startDate)
                         ? "Today"
                         : formattedDate(startDate)}
                 </Box>

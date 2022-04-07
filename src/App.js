@@ -60,8 +60,6 @@ const App = () => {
         loadData();
     }, [events, query]);
 
-    console.log(events);
-
     return (
         <ChakraProvider theme={theme}>
             <Header />

@@ -7,13 +7,17 @@ const getEvents = async () => {
             throw new Error(`HTTP error: ${response.status}`);
         }
         const data = await response.json();
-        console.log("data", data);
         const allEvents = data._embedded.events;
+        console.log(allEvents);
 
-        const removeDuplicates = (allEvents, key) => {
-            return [...new Map(allEvents.map((x) => [key(x), x])).values()];
+        const removeDuplicates = (arr, property) => {
+            return [
+                ...new Map(
+                    arr.map((event) => [event[property], event])
+                ).values(),
+            ];
         };
-        return JSON.stringify(removeDuplicates(allEvents, (it) => it.name));
+        return removeDuplicates(allEvents, "name");
     } catch (error) {
         console.error(`Could not get events: ${error}`);
     }
