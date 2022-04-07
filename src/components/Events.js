@@ -22,12 +22,12 @@ const Events = ({ events }) => {
                         image={event.images[0].url}
                         info={event.info}
                         genre={event.classifications[0].segment.name}
-                        // minPrice={
-                        //     event.priceRanges[0].min < event.priceRanges[1].min
-                        //         ? event.priceRanges[0].min
-                        //         : event.priceRanges[1].min
-                        // }
-                        // currency={event.priceRanges[0].currency}
+                        minPrice={
+                            event.priceRanges[0].min < event.priceRanges[1].min
+                                ? event.priceRanges[0].min
+                                : event.priceRanges[1].min
+                        }
+                        currency={event.priceRanges[0].currency}
                         city={event._embedded.venues[0].city.name}
                         country={event._embedded.venues[0].country.name}
                         startDate={event.dates.start.localDate}

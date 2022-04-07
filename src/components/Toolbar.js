@@ -13,7 +13,8 @@ const Toolbar = () => {
                     placeholder="Select city"
                     mr="0.5rem"
                     w="10rem"
-                    bg="teal.300"
+                    bg="steelPink"
+                    color="white"
                     variant="filled"
                 >
                     <option value="option1">Barcelona</option>
@@ -24,7 +25,8 @@ const Toolbar = () => {
                     placeholder="Select date"
                     mr="0.5rem"
                     w="10rem"
-                    bg="teal.300"
+                    bg="steelPink"
+                    color="white"
                     variant="filled"
                 >
                     <option value="today">Today</option>
@@ -36,7 +38,8 @@ const Toolbar = () => {
                     placeholder="Select genre"
                     mr="0.5rem"
                     w="10rem"
-                    bg="teal.300"
+                    bg="steelPink"
+                    color="white"
                     variant="filled"
                 >
                     <option value="music">Music</option>
