@@ -22,7 +22,7 @@ const Event = ({
     currency,
     startDate,
 }) => {
-    console.log({ info });
+    console.log(":", todayDate());
 
     return (
         <Box
@@ -69,7 +69,7 @@ const Event = ({
                 </Box>
                 <Box>
                     Start date:{" "}
-                    {startDate === todayDate
+                    {startDate === todayDate()
                         ? "Today"
                         : formattedDate(startDate)}
                 </Box>
