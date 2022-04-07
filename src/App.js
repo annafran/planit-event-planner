@@ -36,7 +36,17 @@ const styles = {
     },
 };
 
-const theme = extendTheme({ colors, styles });
+const breakpoints = {
+    sm: "30em",
+    md: "48em",
+    lg: "62em",
+    xl: "80em",
+    "2xl": "96em",
+    "3xl": "125em",
+    "4xl": "150em",
+};
+
+const theme = extendTheme({ colors, styles, breakpoints });
 
 const App = () => {
     const [events, setEvents] = useState([]);

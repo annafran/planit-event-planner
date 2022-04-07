@@ -8,16 +8,16 @@ const getEvents = async () => {
         }
         const data = await response.json();
         const allEvents = data._embedded.events;
-        console.log(allEvents);
+        return allEvents;
 
-        const removeDuplicates = (arr, property) => {
-            return [
-                ...new Map(
-                    arr.map((event) => [event[property], event])
-                ).values(),
-            ];
-        };
-        return removeDuplicates(allEvents, "name");
+        // const removeDuplicates = (arr, property) => {
+        //     return [
+        //         ...new Map(
+        //             arr.map((event) => [event[property], event])
+        //         ).values(),
+        //     ];
+        // };
+        // return removeDuplicates(allEvents, "name");
     } catch (error) {
         console.error(`Could not get events: ${error}`);
     }

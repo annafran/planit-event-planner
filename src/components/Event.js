@@ -14,7 +14,6 @@ const Event = ({
     name,
     url,
     image,
-    info,
     minPrice,
     genre,
     city,
@@ -24,7 +23,7 @@ const Event = ({
 }) => {
     return (
         <Box
-            maxW="sm"
+            w="100%"
             height="fit-content"
             borderWidth="1px"
             borderRadius="lg"
@@ -63,10 +62,9 @@ const Event = ({
                 </Box>
 
                 <Box>
-                    Price from: {minPrice} {currency}
+                    From {minPrice} {currency}
                 </Box>
                 <Box>
-                    Start date:{" "}
                     {dateToday() === formattedDate(startDate)
                         ? "Today"
                         : formattedDate(startDate)}

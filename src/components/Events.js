@@ -8,11 +8,15 @@ const Events = ({ events }) => {
                 templateColumns={[
                     "1fr",
                     "repeat(2, 1fr)",
+                    "null",
                     "repeat(3, 1fr)",
                     "repeat(4, 1fr)",
+                    "null",
+                    "repeat(5, 1fr)",
                 ]}
-                gap={6}
+                gap="2rem"
                 templateRows="auto"
+                justifyItems="center"
             >
                 {events.map((event) => (
                     <Event
@@ -20,9 +24,8 @@ const Events = ({ events }) => {
                         name={event.name}
                         url={event.url}
                         image={event.images[0].url}
-                        info={event.info}
                         genre={
-                            event.classifications?.[0].segment.name ||
+                            event.classifications?.[0].genre.name ||
                             "Miscellaneous"
                         }
                         minPrice={
