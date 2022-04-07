@@ -21,15 +21,25 @@ const Events = ({ events }) => {
                         url={event.url}
                         image={event.images[0].url}
                         info={event.info}
-                        genre={event.classifications[0].segment.name}
-                        minPrice={
-                            event.priceRanges[0].min < event.priceRanges[1].min
-                                ? event.priceRanges[0].min
-                                : event.priceRanges[1].min
+                        genre={
+                            event.classifications?.[0].segment.name ||
+                            "Miscellaneous"
                         }
-                        currency={event.priceRanges[0].currency}
-                        city={event._embedded.venues[0].city.name}
-                        country={event._embedded.venues[0].country.name}
+                        minPrice={
+                            event.priceRanges?.[0].min <
+                            event.priceRanges?.[1].min
+                                ? event.priceRanges?.[0].min
+                                : event.priceRanges?.[1].min || 0
+                        }
+                        currency={event.priceRanges?.[0].currency || "EUR"}
+                        city={
+                            event._embedded.venues?.[0].city.name ||
+                            "Not listed"
+                        }
+                        country={
+                            event._embedded.venues?.[0].country.name ||
+                            "Not listed"
+                        }
                         startDate={event.dates.start.localDate}
                     />
                 ))}
