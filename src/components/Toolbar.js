@@ -12,11 +12,11 @@ const Toolbar = ({ onCountryChange }) => {
             mr="2rem"
             ml="2rem"
             templateColumns={[
-                "repeat(2, 1fr)",
+                "1fr",
+                "repeat(3, 1fr)",
                 "null",
-                "repeat(4, 1fr)",
+                "repeat(6, 1fr)",
                 "null",
-                "repeat(8, 1fr)",
             ]}
             justifyItems="center"
         >

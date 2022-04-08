@@ -7,21 +7,21 @@ const CountrySelector = ({ onCountryChange, setCurrentPage }) => {
     };
 
     const countries = [
-        { country: "United States of America", countryCode: "US" },
-        { country: "Spain", countryCode: "ES" },
+        { country: "Australia", countryCode: "AU" },
         { country: "Canada", countryCode: "CA" },
-        { country: "Netherlands", countryCode: "NL" },
-        { country: "Sweden", countryCode: "SE" },
-        { country: "Mexico", countryCode: "MX" },
+        { country: "Germany", countryCode: "DE" },
         { country: "Great Britain", countryCode: "GB" },
         { country: "Ireland", countryCode: "IE" },
-        { country: "Germany", countryCode: "DE" },
-        { country: "Australia", countryCode: "AU" },
+        { country: "Mexico", countryCode: "MX" },
+        { country: "Netherlands", countryCode: "NL" },
         { country: "New Zealand", countryCode: "NZ" },
+        { country: "Spain", countryCode: "ES" },
+        { country: "Sweden", countryCode: "SE" },
+        { country: "United States of America", countryCode: "US" },
     ];
 
     return (
-        <GridItem colStart={[1, 1, 1, 1, 5]} colEnd={[2, 2, 2, 2, 6]} w="100%">
+        <GridItem colStart={[1, 1, 1, 4, 4]} colEnd={[2, 2, 2, 5, 5]} w="100%">
             <Select
                 placeholder="Select country"
                 bg="steelPink"
