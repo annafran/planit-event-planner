@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+let geohash = require("ngeohash");
 
 import getEvents from "./services/getEvents";
 import getEventsBySearch from "./services/getEventsBySearch";
@@ -8,9 +9,6 @@ import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
-// import getClassifications from "./services/getClassifications";
-
-// import currentCountryFunc from "./services/currentCountryFunc";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -58,16 +56,27 @@ const App = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [eventsPerPage] = useState(10);
     const [query, setSearch] = useState("");
-    const [currentCountry, setCurrentCountry] = useState("ES");
+    const [currentCountry, setCurrentCountry] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);
+    const [currentLocation, setCurrentLocation] = useState(null);
+
+    useEffect(() => {
+        getLocation();
+    }, []);
+
+    useEffect(() => {
+        console.log({ currentLocation });
+    }, [currentLocation]);
 
     useEffect(() => {
         const loadData = async () => {
-            setEvents(await getEvents(currentCountry));
+            setEvents(await getEvents(currentCountry, currentLocation));
         };
 
-        loadData();
-    }, [currentCountry]);
+        if (currentLocation) {
+            loadData();
+        }
+    }, [currentCountry, currentLocation]);
 
     useEffect(() => {
         const loadData = () => {
@@ -89,11 +98,34 @@ const App = () => {
         setCurrentPage(pageNumber);
     };
 
+    const getLocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+        } else {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setCurrentLocation(
+                        geohash.encode(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        )
+                    );
+                },
+                () => {
+                    alert("Unable to retrieve your location");
+                }
+            );
+        }
+    };
+
     return (
         <ChakraProvider theme={theme}>
             <Header />
             <Banner setSearch={setSearch} query={query} />
-            <Toolbar onCountryChange={setCurrentCountry} />
+            <Toolbar
+                onCountryChange={setCurrentCountry}
+                setCurrentPage={setCurrentPage}
+            />
             <Events events={currentEvents} />
             <Pagination
                 eventsPerPage={eventsPerPage}

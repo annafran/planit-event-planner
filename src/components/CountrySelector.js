@@ -1,13 +1,25 @@
 import { Select, GridItem } from "@chakra-ui/react";
 
-const CountrySelector = ({ onCountryChange }) => {
+const CountrySelector = ({ onCountryChange, setCurrentPage }) => {
     const onChange = (e) => {
         onCountryChange(e.target.value);
+        setCurrentPage(1);
     };
 
     const countries = [
-        { id: 1, country: "United States of America", countryCode: "US" },
-        { id: 2, country: "Spain", countryCode: "ES" },
+        { country: "United States of America", countryCode: "US" },
+        { country: "Spain", countryCode: "ES" },
+        { country: "Canada", countryCode: "CA" },
+        { country: "Netherlands", countryCode: "NL" },
+        { country: "Sweden", countryCode: "SE" },
+        { country: "Mexico", countryCode: "MX" },
+        { country: "Great Britain", countryCode: "GB" },
+        { country: "Ireland", countryCode: "IE" },
+        { country: "Germany", countryCode: "DE" },
+        { country: "Australia", countryCode: "AU" },
+        { country: "New Zealand", countryCode: "NZ" },
+        // { country: "Turkey", countryCode: "TR" },
+        { country: "Northern Ireland", countryCode: "ND" },
     ];
 
     return (
@@ -22,7 +34,10 @@ const CountrySelector = ({ onCountryChange }) => {
                 onChange={onChange}
             >
                 {countries.map((country) => (
-                    <option key={country.id} value={country.countryCode}>
+                    <option
+                        key={country.countryCode}
+                        value={country.countryCode}
+                    >
                         {country.country}
                     </option>
                 ))}
