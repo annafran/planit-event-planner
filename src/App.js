@@ -9,6 +9,7 @@ import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
+import filterToday from "./utils/filterToday";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -59,6 +60,7 @@ const App = () => {
     const [currentCountry, setCurrentCountry] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
+    const [dateOption, setDateOption] = useState("");
 
     useEffect(() => {
         getLocation();
@@ -77,6 +79,15 @@ const App = () => {
             loadData();
         }
     }, [currentCountry, currentLocation]);
+
+    useEffect(() => {
+        const loadData = () => {
+            const filteredToday = filterToday(events, dateOption);
+            setFilteredEvents([...filteredToday]);
+        };
+
+        loadData();
+    }, [dateOption, events]);
 
     useEffect(() => {
         const loadData = () => {
@@ -125,6 +136,8 @@ const App = () => {
             <Toolbar
                 onCountryChange={setCurrentCountry}
                 setCurrentPage={setCurrentPage}
+                dateOption={dateOption}
+                setDateOption={setDateOption}
             />
             <Events events={currentEvents} />
             <Pagination

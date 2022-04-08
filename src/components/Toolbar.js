@@ -3,7 +3,7 @@ import CountrySelector from "./CountrySelector";
 import DateSelector from "./DateSelector";
 import SortBy from "./SortBy";
 
-const Toolbar = ({ onCountryChange }) => {
+const Toolbar = ({ onCountryChange, dateOption, setDateOption }) => {
     return (
         <Grid
             display="grid"
@@ -21,7 +21,10 @@ const Toolbar = ({ onCountryChange }) => {
             justifyItems="center"
         >
             <CountrySelector onCountryChange={onCountryChange} />
-            <DateSelector />
+            <DateSelector
+                dateOption={dateOption}
+                setDateOption={setDateOption}
+            />
             <SortBy />
         </Grid>
     );
