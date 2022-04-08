@@ -69,16 +69,6 @@ const App = () => {
         loadData();
     }, [currentCountry]);
 
-    // useEffect(() => {
-    //     const loadData = async () => {
-    //         const urlCode = currentCountryFunc(currentCountry);
-    //         setCurrentCountry(urlCode);
-    //         setEvents(await getEvents(currentCountry));
-    //     };
-
-    //     loadData();
-    // }, [currentCountry]);
-
     useEffect(() => {
         const loadData = () => {
             const searchedEvents = getEventsBySearch(events, query);
