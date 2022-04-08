@@ -10,17 +10,67 @@ import {
 import formattedDate from "../utils/formattedDate";
 import dateToday from "../utils/dateToday";
 
-const Event = ({
-    name,
-    url,
-    image,
-    minPrice,
-    genre,
-    city,
-    country,
-    currency,
-    startDate,
-}) => {
+const Event = ({ event }) => {
+    const {
+        name,
+        url,
+        images,
+        classifications = [],
+        priceRanges = [],
+        _embedded = { venues: [] },
+        dates,
+    } = event;
+
+    const getImage = () => {
+        if (images.length > 0) {
+            return images[0].url;
+        }
+
+        return "";
+    };
+
+    const getGenre = () => {
+        if (classifications.length > 0) {
+            return classifications[0].genre?.name || "Miscellaneous";
+        }
+
+        return "Miscellaneous";
+    };
+
+    const getMinPrice = () => {
+        if (priceRanges.length > 1) {
+            return priceRanges[0].min < priceRanges[1].min
+                ? priceRanges[0].min
+                : priceRanges[1].min;
+        }
+
+        if (priceRanges.length > 0) {
+            return priceRanges[0].min;
+        }
+        return 0;
+    };
+
+    const getCurrency = () => {
+        if (priceRanges.length > 0) {
+            return priceRanges[0].currency;
+        }
+        return "EUR";
+    };
+
+    const getCity = () => {
+        if (_embedded.venues.length > 0) {
+            return _embedded.venues[0].city.name;
+        }
+        return "Not listed";
+    };
+
+    const getCountry = () => {
+        if (_embedded.venues.length > 0) {
+            return _embedded.venues[0].country.name;
+        }
+        return "Not listed";
+    };
+
     return (
         <Box
             w="100%"
@@ -31,13 +81,13 @@ const Event = ({
             bg="white"
         >
             <AspectRatio maxW="30rem" ratio={4 / 3}>
-                <Image src={image} alt={name} />
+                <Image src={getImage()} alt={name} />
             </AspectRatio>
 
             <Box p="6">
                 <Box display="flex" alignItems="baseline">
                     <Badge borderRadius="full" px="2" bg="cyan.200">
-                        {genre}
+                        {getGenre()}
                     </Badge>
                     <Box
                         color="gray.500"
@@ -47,7 +97,7 @@ const Event = ({
                         textTransform="uppercase"
                         ml="2"
                     >
-                        {city} &bull; {country}
+                        {getCity()} &bull; {getCountry()}
                     </Box>
                 </Box>
 
@@ -62,12 +112,12 @@ const Event = ({
                 </Box>
 
                 <Box>
-                    From {minPrice} {currency}
+                    From {getMinPrice()} {getCurrency()}
                 </Box>
                 <Box>
-                    {dateToday() === formattedDate(startDate)
+                    {dateToday() === formattedDate(dates.start.localDate)
                         ? "Today"
-                        : formattedDate(startDate)}
+                        : formattedDate(dates.start.localDate)}
                 </Box>
                 <Button variant="solid" size="sm" bg="babyBlueEyes" mt="1rem">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>

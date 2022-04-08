@@ -1,7 +1,7 @@
-const getEvents = async () => {
+const getEvents = async (countryCode) => {
     try {
-        const url =
-            "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=ES&size=100&sort=date,asc&apikey=6jG90DR1wOjINQitcnGMKO7gk8DJFCRD";
+        const url = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=${countryCode}&size=100&sort=date,asc&apikey=6jG90DR1wOjINQitcnGMKO7gk8DJFCRD`;
+        console.log(url);
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status}`);

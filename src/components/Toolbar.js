@@ -1,6 +1,7 @@
 import { Select, Grid, GridItem } from "@chakra-ui/react";
+import CountrySelector from "./CountrySelector";
 
-const Toolbar = () => {
+const Toolbar = ({ onCountryChange }) => {
     return (
         <>
             <Grid
@@ -18,24 +19,7 @@ const Toolbar = () => {
                 ]}
                 justifyItems="center"
             >
-                <GridItem
-                    colStart={[1, 1, 1, 1, 5]}
-                    colEnd={[2, 2, 2, 2, 6]}
-                    w="100%"
-                >
-                    <Select
-                        placeholder="Select city"
-                        bg="steelPink"
-                        color="white"
-                        variant="filled"
-                        _hover={{ bg: "violetWeb" }}
-                        _focus={{ bg: "violetWeb" }}
-                    >
-                        <option value="option1">Barcelona</option>
-                        <option value="option2">Madrid</option>
-                        <option value="option3">Santiago de Compostela</option>
-                    </Select>
-                </GridItem>
+                <CountrySelector onCountryChange={onCountryChange} />
                 <GridItem w="100%">
                     <Select
                         placeholder="Select date"

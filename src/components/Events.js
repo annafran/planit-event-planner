@@ -18,34 +18,9 @@ const Events = ({ events }) => {
                 templateRows="auto"
                 justifyItems="center"
             >
-                {events.map((event) => (
-                    <Event
-                        key={event.id}
-                        name={event.name}
-                        url={event.url}
-                        image={event.images[0].url}
-                        genre={
-                            event.classifications?.[0].genre.name ||
-                            "Miscellaneous"
-                        }
-                        minPrice={
-                            event.priceRanges?.[0].min <
-                            event.priceRanges?.[1].min
-                                ? event.priceRanges?.[0].min
-                                : event.priceRanges?.[1].min || 0
-                        }
-                        currency={event.priceRanges?.[0].currency || "EUR"}
-                        city={
-                            event._embedded.venues?.[0].city.name ||
-                            "Not listed"
-                        }
-                        country={
-                            event._embedded.venues?.[0].country.name ||
-                            "Not listed"
-                        }
-                        startDate={event.dates.start.localDate}
-                    />
-                ))}
+                {events.map((event) => {
+                    return <Event key={event.id} event={event} />;
+                })}
             </Grid>
         </Box>
     );

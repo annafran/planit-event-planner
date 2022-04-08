@@ -7,6 +7,10 @@ import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
+import Pagination from "./components/Pagination";
+// import getClassifications from "./services/getClassifications";
+
+// import currentCountryFunc from "./services/currentCountryFunc";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -51,16 +55,29 @@ const theme = extendTheme({ colors, styles, breakpoints });
 
 const App = () => {
     const [events, setEvents] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [eventsPerPage] = useState(10);
     const [query, setSearch] = useState("");
+    const [currentCountry, setCurrentCountry] = useState("ES");
     const [filteredEvents, setFilteredEvents] = useState([]);
 
     useEffect(() => {
         const loadData = async () => {
-            setEvents(await getEvents());
+            setEvents(await getEvents(currentCountry));
         };
 
         loadData();
-    }, []);
+    }, [currentCountry]);
+
+    // useEffect(() => {
+    //     const loadData = async () => {
+    //         const urlCode = currentCountryFunc(currentCountry);
+    //         setCurrentCountry(urlCode);
+    //         setEvents(await getEvents(currentCountry));
+    //     };
+
+    //     loadData();
+    // }, [currentCountry]);
 
     useEffect(() => {
         const loadData = () => {
@@ -71,12 +88,28 @@ const App = () => {
         loadData();
     }, [events, query]);
 
+    const indexOfLastEvent = currentPage * eventsPerPage;
+    const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+    const currentEvents = filteredEvents.slice(
+        indexOfFirstEvent,
+        indexOfLastEvent
+    );
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <ChakraProvider theme={theme}>
             <Header />
             <Banner setSearch={setSearch} query={query} />
-            <Toolbar />
-            <Events events={filteredEvents} />
+            <Toolbar onCountryChange={setCurrentCountry} />
+            <Events events={currentEvents} />
+            <Pagination
+                eventsPerPage={eventsPerPage}
+                totalEvents={filteredEvents.length}
+                paginate={paginate}
+            />
         </ChakraProvider>
     );
 };
