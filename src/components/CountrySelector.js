@@ -18,8 +18,6 @@ const CountrySelector = ({ onCountryChange, setCurrentPage }) => {
         { country: "Germany", countryCode: "DE" },
         { country: "Australia", countryCode: "AU" },
         { country: "New Zealand", countryCode: "NZ" },
-        // { country: "Turkey", countryCode: "TR" },
-        { country: "Northern Ireland", countryCode: "ND" },
     ];
 
     return (

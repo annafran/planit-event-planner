@@ -1,3 +1,5 @@
+import { Button, ButtonGroup } from "@chakra-ui/react";
+
 const Pagination = ({ eventsPerPage, totalEvents, paginate }) => {
     const pageNumbers = [];
 
@@ -6,17 +8,24 @@ const Pagination = ({ eventsPerPage, totalEvents, paginate }) => {
     }
 
     return (
-        <div>
-            <ul>
-                {pageNumbers.map((number) => (
-                    <li key={number}>
-                        <a onClick={() => paginate(number)} href="!#">
-                            {number}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <ButtonGroup
+            spacing="6"
+            direction="row"
+            mb="3rem"
+            w="100%"
+            justifyContent="center"
+        >
+            {pageNumbers.map((number) => (
+                <Button
+                    bg="babyBlueEyes"
+                    key={number}
+                    onClick={() => paginate(number)}
+                    href="!#"
+                >
+                    {number}
+                </Button>
+            ))}
+        </ButtonGroup>
     );
 };
 
