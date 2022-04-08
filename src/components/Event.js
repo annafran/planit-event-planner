@@ -40,21 +40,21 @@ const Event = ({ event }) => {
     const getMinPrice = () => {
         if (priceRanges.length > 1) {
             return priceRanges[0].min < priceRanges[1].min
-                ? priceRanges[0].min
-                : priceRanges[1].min;
+                ? `From ${priceRanges[0].min.toFixed(2)}`
+                : `From ${priceRanges[1].min.toFixed(2)}`;
         }
 
         if (priceRanges.length > 0) {
-            return priceRanges[0].min;
+            return priceRanges[0].min.toFixed(2);
         }
-        return 0;
+        return "No pricing information";
     };
 
     const getCurrency = () => {
         if (priceRanges.length > 0) {
             return priceRanges[0].currency;
         }
-        return "EUR";
+        return "";
     };
 
     const getCity = () => {
@@ -112,7 +112,7 @@ const Event = ({ event }) => {
                 </Box>
 
                 <Box>
-                    From {getMinPrice()} {getCurrency()}
+                    {getMinPrice()} {getCurrency()}
                 </Box>
                 <Box>
                     {dateToday() === formattedDate(dates.start.localDate)
