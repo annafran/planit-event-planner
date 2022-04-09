@@ -1,8 +1,7 @@
 const { DateTime } = require("luxon");
 
-const formattedDate = (startDate) => {
-    return DateTime.fromISO(String(startDate)).toFormat("d LLLL yyyy");
+const formattedDate = (date) => {
+    return DateTime.fromISO(String(date)).toFormat("d LLLL yyyy");
 };
 
-formattedDate();
 export default formattedDate;

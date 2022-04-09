@@ -11,6 +11,7 @@ import Events from "./components/Events";
 import Pagination from "./components/Pagination";
 import filterToday from "./utils/filterToday";
 import sortPrices from "./utils/sortPrices";
+import filterByDate from "./utils/filterByDate";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -64,6 +65,7 @@ const App = () => {
     const [dateOption, setDateOption] = useState("");
     const [loading, setLoading] = useState(false);
     const [sortByPrice, setSortByPrice] = useState("");
+    const [selectedDate, setSelectedDate] = useState("");
 
     useEffect(() => {
         getLocation();
@@ -84,6 +86,15 @@ const App = () => {
             loadData();
         }
     }, [currentCountry, currentLocation]);
+
+    useEffect(() => {
+        const loadData = () => {
+            const filteredDate = filterByDate(events, selectedDate);
+            setFilteredEvents([...filteredDate]);
+        };
+
+        loadData();
+    }, [selectedDate, events]);
 
     useEffect(() => {
         const loadData = () => {
@@ -151,6 +162,8 @@ const App = () => {
                 onCountryChange={setCurrentCountry}
                 setDateOption={setDateOption}
                 setSortByPrice={setSortByPrice}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
             />
             <Events events={currentEvents} loading={loading} />
             <Pagination

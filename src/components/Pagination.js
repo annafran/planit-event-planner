@@ -21,7 +21,9 @@ const Pagination = ({ currentPage, eventsPerPage, totalEvents, paginate }) => {
                         number === currentPage ? "lavenderGray" : "babyBlueEyes"
                     }
                     key={number}
-                    onClick={() => paginate(number)}
+                    onClick={() => {
+                        paginate(number);
+                    }}
                     href="!#"
                 >
                     {number}
