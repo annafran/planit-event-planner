@@ -97,7 +97,7 @@ const App = () => {
     useEffect(() => {
         const loadData = () => {
             const sorted = sortEvents(events, sortBy);
-            setSortBy([...sorted]);
+            setFilteredEvents([...sorted]);
         };
 
         loadData();
@@ -149,8 +149,6 @@ const App = () => {
             <Banner setSearch={setSearch} query={query} />
             <Toolbar
                 onCountryChange={setCurrentCountry}
-                setCurrentPage={setCurrentPage}
-                dateOption={dateOption}
                 setDateOption={setDateOption}
                 setSortBy={setSortBy}
             />
