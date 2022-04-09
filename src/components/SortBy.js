@@ -1,6 +1,10 @@
 import { Select, GridItem } from "@chakra-ui/react";
 
-const SortBy = () => {
+const SortBy = ({ setSortBy }) => {
+    const onChange = (e) => {
+        setSortBy(e.target.value);
+    };
+
     return (
         <GridItem w="100%">
             <Select
@@ -10,6 +14,7 @@ const SortBy = () => {
                 variant="filled"
                 _hover={{ bg: "violetWeb" }}
                 _focus={{ bg: "violetWeb" }}
+                onChange={onChange}
             >
                 <option value="low">Price: low to high</option>
                 <option value="high">Price: high to low</option>

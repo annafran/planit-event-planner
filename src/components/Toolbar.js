@@ -3,7 +3,7 @@ import CountrySelector from "./CountrySelector";
 import DateSelector from "./DateSelector";
 import SortBy from "./SortBy";
 
-const Toolbar = ({ onCountryChange, dateOption, setDateOption }) => {
+const Toolbar = ({ onCountryChange, dateOption, setDateOption, setSortBy }) => {
     return (
         <Grid
             display="grid"
@@ -25,7 +25,7 @@ const Toolbar = ({ onCountryChange, dateOption, setDateOption }) => {
                 dateOption={dateOption}
                 setDateOption={setDateOption}
             />
-            <SortBy />
+            <SortBy setSortBy={setSortBy} />
         </Grid>
     );
 };
