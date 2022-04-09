@@ -13,6 +13,7 @@ const Events = ({ events, loading }) => {
                     w="6rem"
                     h="6rem"
                     mt="5rem"
+                    mb="5rem"
                 />
             </Box>
         );
