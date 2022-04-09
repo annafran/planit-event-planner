@@ -144,6 +144,7 @@ const App = () => {
             />
             <Events events={currentEvents} loading={loading} />
             <Pagination
+                currentPage={currentPage}
                 eventsPerPage={eventsPerPage}
                 totalEvents={filteredEvents.length}
                 paginate={paginate}
