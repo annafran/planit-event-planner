@@ -1,5 +1,7 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 
+import sortDates from "../utils/sortDates";
+
 const getEvents = async (countryCode, geoPoint) => {
     if (countryCode) {
         try {
@@ -11,7 +13,8 @@ const getEvents = async (countryCode, geoPoint) => {
             }
             const data = await response.json();
             const events = data._embedded.events;
-            return events;
+            const sortedEvents = sortDates(events);
+            return sortedEvents;
         } catch (error) {
             console.error(`Could not get events: ${error}`);
         }
@@ -25,7 +28,8 @@ const getEvents = async (countryCode, geoPoint) => {
             }
             const data = await response.json();
             const events = data._embedded.events;
-            return events;
+            const sortedEvents = sortDates(events);
+            return sortedEvents;
         } catch (error) {
             console.error(`Could not get events: ${error}`);
         }

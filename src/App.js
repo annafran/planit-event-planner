@@ -10,7 +10,7 @@ import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
 import filterToday from "./utils/filterToday";
-import sortEvents from "./utils/sortEvents";
+import sortPrices from "./utils/sortPrices";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -63,7 +63,7 @@ const App = () => {
     const [currentLocation, setCurrentLocation] = useState(null);
     const [dateOption, setDateOption] = useState("");
     const [loading, setLoading] = useState(false);
-    const [sortBy, setSortBy] = useState("");
+    const [sortByPrice, setSortByPrice] = useState("");
 
     useEffect(() => {
         getLocation();
@@ -96,12 +96,12 @@ const App = () => {
 
     useEffect(() => {
         const loadData = () => {
-            const sorted = sortEvents(events, sortBy);
+            const sorted = sortPrices(events, sortByPrice);
             setFilteredEvents([...sorted]);
         };
 
         loadData();
-    }, [sortBy, events]);
+    }, [sortByPrice, events]);
 
     useEffect(() => {
         const loadData = () => {
@@ -150,7 +150,7 @@ const App = () => {
             <Toolbar
                 onCountryChange={setCurrentCountry}
                 setDateOption={setDateOption}
-                setSortBy={setSortBy}
+                setSortByPrice={setSortByPrice}
             />
             <Events events={currentEvents} loading={loading} />
             <Pagination

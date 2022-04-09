@@ -1,12 +1,12 @@
-const sortEvents = (events, sortBy) => {
+const sortPrices = (events, sortByPrice) => {
     events.sort((eventA, eventB) => {
         const aPrice = eventA.priceRanges?.[0].min || 0;
         const bPrice = eventB.priceRanges?.[0].min || 0;
-        if (sortBy === "low") {
+        if (sortByPrice === "low") {
             return aPrice - bPrice;
         }
 
-        if (sortBy === "high") {
+        if (sortByPrice === "high") {
             return bPrice - aPrice;
         }
         return 0;
@@ -14,4 +14,4 @@ const sortEvents = (events, sortBy) => {
     return events;
 };
 
-export default sortEvents;
+export default sortPrices;
