@@ -61,6 +61,7 @@ const App = () => {
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
     const [dateOption, setDateOption] = useState("");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getLocation();
@@ -72,7 +73,9 @@ const App = () => {
 
     useEffect(() => {
         const loadData = async () => {
+            setLoading(true);
             setEvents(await getEvents(currentCountry, currentLocation));
+            setLoading(false);
         };
 
         if (currentLocation) {
@@ -139,7 +142,7 @@ const App = () => {
                 dateOption={dateOption}
                 setDateOption={setDateOption}
             />
-            <Events events={currentEvents} />
+            <Events events={currentEvents} loading={loading} />
             <Pagination
                 eventsPerPage={eventsPerPage}
                 totalEvents={filteredEvents.length}

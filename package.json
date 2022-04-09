@@ -15,7 +15,6 @@
         "@testing-library/user-event": "^13.5.0",
         "esm": "^3.2.25",
         "framer-motion": "^3.10.6",
-        "latlon-geohash": "^2.0.0",
         "luxon": "^2.3.1",
         "ngeohash": "^0.6.3",
         "prettier": "^2.4.1",
