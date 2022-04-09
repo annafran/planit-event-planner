@@ -1,19 +1,20 @@
 import Event from "./Event";
-import { Grid, Box, Spinner } from "@chakra-ui/react";
+import { Grid, Box, Spinner, Stack } from "@chakra-ui/react";
 
 const Events = ({ events, loading }) => {
     if (loading) {
         return (
-            <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-                ml="auto"
-                mr="auto"
-                mt="6rem"
-            />
+            <Box display="flex" justifyContent="center">
+                <Spinner
+                    thickness="6px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="blue.500"
+                    w="6rem"
+                    h="6rem"
+                    mt="5rem"
+                />
+            </Box>
         );
     }
 

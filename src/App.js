@@ -72,8 +72,8 @@ const App = () => {
     }, [currentLocation]);
 
     useEffect(() => {
+        setLoading(true);
         const loadData = async () => {
-            setLoading(true);
             setEvents(await getEvents(currentCountry, currentLocation));
             setLoading(false);
         };
