@@ -1,4 +1,4 @@
-import { Grid } from "@chakra-ui/react";
+import { Grid, Button } from "@chakra-ui/react";
 import CountrySelector from "./CountrySelector";
 import DateSelector from "./DateSelector";
 import PriceSorter from "./PriceSorter";
@@ -44,6 +44,7 @@ const Toolbar = ({
                 }}
                 dateFormat="yyyy/MM/dd"
             />
+            <Button onClick={() => setSelectedDate(null)}>Reset</Button>
         </Grid>
     );
 };
