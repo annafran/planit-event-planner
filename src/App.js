@@ -176,6 +176,7 @@ const App = () => {
                 eventsPerPage={eventsPerPage}
                 totalEvents={filteredEvents.length}
                 paginate={paginate}
+                loading={loading}
             />
         </ChakraProvider>
     );

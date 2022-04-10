@@ -1,6 +1,16 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
 
-const Pagination = ({ currentPage, eventsPerPage, totalEvents, paginate }) => {
+const Pagination = ({
+    currentPage,
+    eventsPerPage,
+    totalEvents,
+    paginate,
+    loading,
+}) => {
+    if (loading) {
+        return <></>;
+    }
+
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalEvents / eventsPerPage); i++) {
