@@ -21,7 +21,7 @@ const CountrySelector = ({ onCountryChange, setCurrentPage }) => {
     ];
 
     return (
-        <GridItem colStart={[1, 1, 1, 4, 4]} colEnd={[2, 2, 2, 5, 5]} w="100%">
+        <GridItem colStart={[1, 2, 2, 5, 5]} colEnd={[2, 3, 3, 6, 6]} w="100%">
             <Select
                 placeholder="Select country"
                 bg="steelPink"

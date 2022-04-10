@@ -1,15 +1,15 @@
-import { Grid, Button } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import CountrySelector from "./CountrySelector";
-import DateSelector from "./DateSelector";
+import DateSelectorV2 from "./DateSelectorV2";
+// import DateSelector from "./DateSelector";
 import PriceSorter from "./PriceSorter";
-import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const Toolbar = ({
     onCountryChange,
-    dateOption,
-    setDateOption,
+    // dateOption,
+    // setDateOption,
     setSortByPrice,
     sortByPrice,
     setSelectedDate,
@@ -31,25 +31,20 @@ const Toolbar = ({
             ]}
             justifyItems="center"
         >
-            <CountrySelector onCountryChange={onCountryChange} />
-            <DateSelector
-                dateOption={dateOption}
-                setDateOption={setDateOption}
+            <DateSelectorV2
+                setSelectedDate={setSelectedDate}
+                selectedDate={selectedDate}
             />
+            <CountrySelector onCountryChange={onCountryChange} />
             <PriceSorter
                 setSortByPrice={setSortByPrice}
                 sortByPrice={sortByPrice}
             />
-            <DatePicker
-                selectedDate={selectedDate}
-                placeholderText="Select a date"
-                onChange={(date) => {
-                    setSelectedDate(date);
-                }}
-                dateFormat="yyyy/MM/dd"
-                hidden
-            />
-            <Button onClick={() => setSelectedDate(null)}>Reset</Button>
+
+            {/* <DateSelector
+                dateOption={dateOption}
+                setDateOption={setDateOption}
+            /> */}
         </Grid>
     );
 };

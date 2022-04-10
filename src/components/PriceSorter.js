@@ -6,7 +6,7 @@ const PriceSorter = ({ setSortByPrice, sortByPrice }) => {
     };
 
     return (
-        <GridItem w="100%">
+        <GridItem colStart={[1, 2, 2, 6, 6]} colEnd={[2, 3, 3, 7, 7]} w="100%">
             <Select
                 placeholder="Sort price"
                 value={sortByPrice}

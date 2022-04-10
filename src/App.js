@@ -90,8 +90,8 @@ const App = () => {
     useEffect(() => {
         const loadData = () => {
             const filteredDate = filterByDate(events, selectedDate);
-            const filteredToday = filterToday(filteredDate, dateOption);
-            const sorted = sortPrices(filteredToday, sortByPrice);
+            // const filteredToday = filterToday(filteredDate, dateOption);
+            const sorted = sortPrices(filteredDate, sortByPrice);
             setFilteredEvents([...sorted]);
         };
 
