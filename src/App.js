@@ -96,6 +96,7 @@ const App = () => {
         };
 
         loadData();
+        paginate(1);
     }, [selectedDate, sortByPrice, query, events]);
 
     // useEffect(() => {
