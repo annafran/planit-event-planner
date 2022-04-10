@@ -90,12 +90,13 @@ const App = () => {
     useEffect(() => {
         const loadData = () => {
             const filteredDate = filterByDate(events, selectedDate);
-            const sorted = sortPrices(filteredDate, sortByPrice);
+            const searchedEvents = getEventsBySearch(filteredDate, query);
+            const sorted = sortPrices(searchedEvents, sortByPrice);
             setFilteredEvents([...sorted]);
         };
 
         loadData();
-    }, [selectedDate, sortByPrice, events]);
+    }, [selectedDate, sortByPrice, query, events]);
 
     // useEffect(() => {
     //     const loadData = () => {
@@ -115,14 +116,14 @@ const App = () => {
     //     loadData();
     // }, [sortByPrice, events]);
 
-    useEffect(() => {
-        const loadData = () => {
-            const searchedEvents = getEventsBySearch(events, query);
-            setFilteredEvents([...searchedEvents]);
-        };
+    // useEffect(() => {
+    //     const loadData = () => {
+    //         const searchedEvents = getEventsBySearch(events, query);
+    //         setFilteredEvents([...searchedEvents]);
+    //     };
 
-        loadData();
-    }, [events, query]);
+    //     loadData();
+    // }, [events, query]);
 
     const indexOfLastEvent = currentPage * eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
