@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import CountrySelector from "./CountrySelector";
-import DateSelectorV2 from "./DateSelectorV2";
+import DateFilter from "./DateFilter";
 // import DateSelector from "./DateSelector";
 import PriceSorter from "./PriceSorter";
 
@@ -31,7 +31,7 @@ const Toolbar = ({
             ]}
             justifyItems="center"
         >
-            <DateSelectorV2
+            <DateFilter
                 setSelectedDate={setSelectedDate}
                 selectedDate={selectedDate}
             />

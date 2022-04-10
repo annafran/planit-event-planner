@@ -9,7 +9,7 @@ import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
-import filterToday from "./utils/filterToday";
+// import filterToday from "./utils/filterToday";
 import sortPrices from "./utils/sortPrices";
 import filterByDate from "./utils/filterByDate";
 
@@ -62,7 +62,7 @@ const App = () => {
     const [currentCountry, setCurrentCountry] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
-    const [dateOption, setDateOption] = useState("");
+    // const [dateOption, setDateOption] = useState("");
     const [loading, setLoading] = useState(false);
     const [sortByPrice, setSortByPrice] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -90,13 +90,12 @@ const App = () => {
     useEffect(() => {
         const loadData = () => {
             const filteredDate = filterByDate(events, selectedDate);
-            // const filteredToday = filterToday(filteredDate, dateOption);
             const sorted = sortPrices(filteredDate, sortByPrice);
             setFilteredEvents([...sorted]);
         };
 
         loadData();
-    }, [selectedDate, dateOption, sortByPrice, events]);
+    }, [selectedDate, sortByPrice, events]);
 
     // useEffect(() => {
     //     const loadData = () => {
@@ -162,8 +161,8 @@ const App = () => {
             <Banner setSearch={setSearch} query={query} />
             <Toolbar
                 onCountryChange={setCurrentCountry}
-                setDateOption={setDateOption}
-                dateOption={dateOption}
+                // setDateOption={setDateOption}
+                // dateOption={dateOption}
                 setSortByPrice={setSortByPrice}
                 sortByPrice={sortByPrice}
                 selectedDate={selectedDate}
