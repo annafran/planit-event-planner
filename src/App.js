@@ -65,7 +65,7 @@ const App = () => {
     const [dateOption, setDateOption] = useState("");
     const [loading, setLoading] = useState(false);
     const [sortByPrice, setSortByPrice] = useState("");
-    const [selectedDate, setSelectedDate] = useState("");
+    const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {
         getLocation();
@@ -90,29 +90,31 @@ const App = () => {
     useEffect(() => {
         const loadData = () => {
             const filteredDate = filterByDate(events, selectedDate);
-            setFilteredEvents([...filteredDate]);
-        };
-
-        loadData();
-    }, [selectedDate, events]);
-
-    useEffect(() => {
-        const loadData = () => {
-            const filteredToday = filterToday(events, dateOption);
-            setFilteredEvents([...filteredToday]);
-        };
-
-        loadData();
-    }, [dateOption, events]);
-
-    useEffect(() => {
-        const loadData = () => {
-            const sorted = sortPrices(events, sortByPrice);
+            const filteredToday = filterToday(filteredDate, dateOption);
+            const sorted = sortPrices(filteredToday, sortByPrice);
             setFilteredEvents([...sorted]);
         };
 
         loadData();
-    }, [sortByPrice, events]);
+    }, [selectedDate, dateOption, sortByPrice, events]);
+
+    // useEffect(() => {
+    //     const loadData = () => {
+    //         const filteredToday = filterToday(events, dateOption);
+    //         setFilteredEvents([...filteredToday]);
+    //     };
+
+    //     loadData();
+    // }, [dateOption, events]);
+
+    // useEffect(() => {
+    //     const loadData = () => {
+    //         const sorted = sortPrices(events, sortByPrice);
+    //         setFilteredEvents([...sorted]);
+    //     };
+
+    //     loadData();
+    // }, [sortByPrice, events]);
 
     useEffect(() => {
         const loadData = () => {
@@ -161,7 +163,9 @@ const App = () => {
             <Toolbar
                 onCountryChange={setCurrentCountry}
                 setDateOption={setDateOption}
+                dateOption={dateOption}
                 setSortByPrice={setSortByPrice}
+                sortByPrice={sortByPrice}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
             />

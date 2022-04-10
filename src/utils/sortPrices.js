@@ -9,7 +9,9 @@ const sortPrices = (events, sortByPrice) => {
         if (sortByPrice === "high") {
             return bPrice - aPrice;
         }
-        return 0;
+        if (sortByPrice === "null") {
+            return 0;
+        }
     });
     return events;
 };

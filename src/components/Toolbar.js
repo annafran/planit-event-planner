@@ -11,6 +11,7 @@ const Toolbar = ({
     dateOption,
     setDateOption,
     setSortByPrice,
+    sortByPrice,
     setSelectedDate,
     selectedDate,
 }) => {
@@ -35,7 +36,10 @@ const Toolbar = ({
                 dateOption={dateOption}
                 setDateOption={setDateOption}
             />
-            <PriceSorter setSortByPrice={setSortByPrice} />
+            <PriceSorter
+                setSortByPrice={setSortByPrice}
+                sortByPrice={sortByPrice}
+            />
             <DatePicker
                 selectedDate={selectedDate}
                 placeholderText="Select a date"

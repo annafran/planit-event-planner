@@ -1,6 +1,6 @@
 import { Select, GridItem } from "@chakra-ui/react";
 
-const DateSelector = ({ setDateOption }) => {
+const DateSelector = ({ setDateOption, dateOption }) => {
     const onChange = (e) => {
         setDateOption(e.target.value);
     };
@@ -9,6 +9,8 @@ const DateSelector = ({ setDateOption }) => {
         <GridItem w="100%">
             <Select
                 placeholder="Select date"
+                value={dateOption}
+                defaultValue="null"
                 bg="steelPink"
                 color="white"
                 variant="filled"

@@ -1,6 +1,6 @@
 import { Select, GridItem } from "@chakra-ui/react";
 
-const PriceSorter = ({ setSortByPrice }) => {
+const PriceSorter = ({ setSortByPrice, sortByPrice }) => {
     const onChange = (e) => {
         setSortByPrice(e.target.value);
     };
@@ -9,6 +9,8 @@ const PriceSorter = ({ setSortByPrice }) => {
         <GridItem w="100%">
             <Select
                 placeholder="Sort price"
+                value={sortByPrice}
+                defaultValue="null"
                 bg="steelPink"
                 color="white"
                 variant="filled"
