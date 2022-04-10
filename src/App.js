@@ -64,7 +64,7 @@ const App = () => {
     const [currentLocation, setCurrentLocation] = useState(null);
     const [dateOption, setDateOption] = useState("");
     const [loading, setLoading] = useState(false);
-    const [sortByPrice, setSortByPrice] = useState("");
+    const [sortByPrice, setSortByPrice] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {

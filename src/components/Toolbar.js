@@ -47,6 +47,7 @@ const Toolbar = ({
                     setSelectedDate(date);
                 }}
                 dateFormat="yyyy/MM/dd"
+                hidden
             />
             <Button onClick={() => setSelectedDate(null)}>Reset</Button>
         </Grid>
