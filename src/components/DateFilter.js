@@ -7,8 +7,8 @@ import "../../src/DatePicker.css";
 const DateFilter = ({ selectedDate, setSelectedDate }) => {
     return (
         <GridItem
-            colStart={[1, 2, 2, 4, 4]}
-            colEnd={[2, 3, 3, 5, 5]}
+            colStart={[1, 1, 1, 1, 2]}
+            colEnd={[2, 2, 2, 1, 3]}
             w="100%"
             display="flex"
             direction="row"
