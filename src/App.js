@@ -1,5 +1,12 @@
 import { React, useState, useEffect } from "react";
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import {
+    extendTheme,
+    ChakraProvider,
+    Box,
+    Spinner,
+    Text,
+} from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
 let geohash = require("ngeohash");
 
 import getEvents from "./services/getEvents";
@@ -71,9 +78,9 @@ const App = () => {
         getLocation();
     }, []);
 
-    useEffect(() => {
-        console.log({ currentLocation });
-    }, [currentLocation]);
+    // useEffect(() => {
+    //     console.log({ currentLocation });
+    // }, [currentLocation]);
 
     useEffect(() => {
         setLoading(true);
@@ -156,6 +163,54 @@ const App = () => {
             );
         }
     };
+    const renderContent = () => {
+        if (loading) {
+            return (
+                <Box display="flex" justifyContent="center">
+                    <Spinner
+                        thickness="6px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        w="6rem"
+                        h="6rem"
+                        mt="5rem"
+                        mb="5rem"
+                    />
+                </Box>
+            );
+        }
+
+        if (filteredEvents.length === 0) {
+            return (
+                <Box
+                    w="15rem"
+                    m="auto"
+                    mt="5rem"
+                    display="grid"
+                    direction="column"
+                    gap="2rem"
+                >
+                    <Search2Icon justifySelf="center" boxSize="2rem" />
+                    <Text fontSize="2xl" justifySelf="center">
+                        Oops no events found!
+                    </Text>
+                </Box>
+            );
+        }
+
+        return (
+            <>
+                <Events events={currentEvents} />
+                <Pagination
+                    currentPage={currentPage}
+                    eventsPerPage={eventsPerPage}
+                    totalEvents={filteredEvents.length}
+                    paginate={paginate}
+                />
+            </>
+        );
+    };
 
     return (
         <ChakraProvider theme={theme}>
@@ -170,14 +225,7 @@ const App = () => {
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
             />
-            <Events events={currentEvents} loading={loading} />
-            <Pagination
-                currentPage={currentPage}
-                eventsPerPage={eventsPerPage}
-                totalEvents={filteredEvents.length}
-                paginate={paginate}
-                loading={loading}
-            />
+            {renderContent()}
         </ChakraProvider>
     );
 };
