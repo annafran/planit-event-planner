@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# PLANIT - Online Event Search Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An online event searching database, pulling events from the Ticketmaster API. Clients can browse events from various countries that are supported markets with Ticketmaster. Each event has an event card with basic information and a link to the Ticketmaster website if they wish to see more information or buy tickets.
+Events can be filtered by:
 
-## Available Scripts
+-   Date - using a datepicker
+-   Price
+-   Country (the website uses geolocation to load events from the user's current location as a default)
+-   Keyword search
 
-In the project directory, you can run:
+## Screenshot of PLANIT website
 
-### `npm start`
+![Screenshot of PLANIT website](screenshot-planit-website.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshot of calendar and search functions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Screenshot of website calendar and search functions](screenshot-planit-search.png)
 
-### `npm test`
+## Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project uses the following systems:
 
-### `npm run build`
+-   [Stripe](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/)
+-   [React](https://github.com/facebook/react)
+-   [Chakra](https://chakra-ui.com/)
+-   [Luxon](https://moment.github.io/luxon/#/)
+-   [node-geohash](https://www.npmjs.com/package/ngeohash)
+-   [React Date Picker](https://www.npmjs.com/package/react-datepicker)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dev dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   [Prettier](https://prettier.io/)
+-   [Stylelint](https://stylelint.io/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Prerequisites
 
-### `npm run eject`
+-   [Node](https://nodejs.org/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Local development
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Run `npm install`
+2. Run `npm start` to start the development server
+3. Open `src/App.js` to get started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Deployed applications
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-   [PLANIT](https://planitevents.netlify.app/)
 
-## Learn More
+## Citations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   Header image from: [Unsplash - Photo by Med Mhamdi](https://unsplash.com/photos/mH_E0K581Yk)
+-   Logo created on: [Canva](https://www.canva.com/)
+-   Favicon created on: [Canva](https://www.canva.com/)

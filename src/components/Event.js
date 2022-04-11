@@ -74,7 +74,6 @@ const Event = ({ event }) => {
     return (
         <Box
             w="100%"
-            height={["fit-content", "30rem"]}
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
