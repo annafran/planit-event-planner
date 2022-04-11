@@ -16,7 +16,7 @@ const Events = ({ events }) => {
                 ]}
                 gap="2rem"
                 templateRows="auto"
-                w={["70%", "60%", "80%", "70%", "80%"]}
+                w={["90%", "70%", "80%", "70%", "80%"]}
                 ml="auto"
                 mr="auto"
                 justifyItems="center"

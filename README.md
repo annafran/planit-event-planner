@@ -20,7 +20,7 @@ Events can be filtered by:
 
 This project uses the following systems:
 
--   [Stripe](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/)
+-   [Ticketmaster API](https://developer.ticketmaster.com/products-and-docs/apis/getting-started/)
 -   [React](https://github.com/facebook/react)
 -   [Chakra](https://chakra-ui.com/)
 -   [Luxon](https://moment.github.io/luxon/#/)
