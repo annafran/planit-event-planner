@@ -1,4 +1,4 @@
-import formatSelectedDate from "./formatSelectedDate";
+import formatSelectedDate from "../utils/formatSelectedDate";
 
 const filterByDate = (events, selectedDate) => {
     if (selectedDate === null) {

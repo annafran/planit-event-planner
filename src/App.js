@@ -16,9 +16,8 @@ import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
-// import filterToday from "./utils/filterToday";
-import sortPrices from "./utils/sortPrices";
-import filterByDate from "./utils/filterByDate";
+import sortPrices from "./services/sortPrices";
+import filterByDate from "./services/filterByDate";
 
 const colors = {
     lavenderGray: "#C9CAD9",
@@ -69,7 +68,6 @@ const App = () => {
     const [currentCountry, setCurrentCountry] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
-    // const [dateOption, setDateOption] = useState("");
     const [loading, setLoading] = useState(false);
     const [sortByPrice, setSortByPrice] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -77,10 +75,6 @@ const App = () => {
     useEffect(() => {
         getLocation();
     }, []);
-
-    // useEffect(() => {
-    //     console.log({ currentLocation });
-    // }, [currentLocation]);
 
     useEffect(() => {
         setLoading(true);
@@ -105,33 +99,6 @@ const App = () => {
         loadData();
         paginate(1);
     }, [selectedDate, sortByPrice, query, events]);
-
-    // useEffect(() => {
-    //     const loadData = () => {
-    //         const filteredToday = filterToday(events, dateOption);
-    //         setFilteredEvents([...filteredToday]);
-    //     };
-
-    //     loadData();
-    // }, [dateOption, events]);
-
-    // useEffect(() => {
-    //     const loadData = () => {
-    //         const sorted = sortPrices(events, sortByPrice);
-    //         setFilteredEvents([...sorted]);
-    //     };
-
-    //     loadData();
-    // }, [sortByPrice, events]);
-
-    // useEffect(() => {
-    //     const loadData = () => {
-    //         const searchedEvents = getEventsBySearch(events, query);
-    //         setFilteredEvents([...searchedEvents]);
-    //     };
-
-    //     loadData();
-    // }, [events, query]);
 
     const indexOfLastEvent = currentPage * eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -218,8 +185,6 @@ const App = () => {
             <Banner setSearch={setSearch} query={query} />
             <Toolbar
                 onCountryChange={setCurrentCountry}
-                // setDateOption={setDateOption}
-                // dateOption={dateOption}
                 setSortByPrice={setSortByPrice}
                 sortByPrice={sortByPrice}
                 selectedDate={selectedDate}

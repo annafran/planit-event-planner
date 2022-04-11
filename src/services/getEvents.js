@@ -1,6 +1,6 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 
-import sortDates from "../utils/sortDates";
+import sortDates from "./sortDates";
 
 const getEvents = async (countryCode, geoPoint) => {
     if (countryCode) {
