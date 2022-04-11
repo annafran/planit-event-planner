@@ -69,7 +69,7 @@ const App = () => {
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [sortByPrice, setSortByPrice] = useState(null);
+    const [sortByPrice, setSortByPrice] = useState("null");
     const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {
