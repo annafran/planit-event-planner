@@ -7,7 +7,7 @@ import {
     AspectRatio,
 } from "@chakra-ui/react";
 
-import formattedDate from "../utils/formattedDate";
+import formatEventDate from "../utils/formatEventDate";
 import dateToday from "../utils/dateToday";
 
 const Event = ({ event }) => {
@@ -115,9 +115,9 @@ const Event = ({ event }) => {
                     {getMinPrice()} {getCurrency()}
                 </Box>
                 <Box>
-                    {dateToday() === formattedDate(dates.start.localDate)
+                    {dateToday() === formatEventDate(dates.start.localDate)
                         ? "Today"
-                        : formattedDate(dates.start.localDate)}
+                        : formatEventDate(dates.start.localDate)}
                 </Box>
                 <Button variant="solid" size="sm" bg="babyBlueEyes" mt="1rem">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>
