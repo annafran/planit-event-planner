@@ -151,7 +151,7 @@ const App = () => {
         if (filteredEvents.length === 0) {
             return (
                 <Box
-                    w="15rem"
+                    w="90%"
                     m="auto"
                     mt="5rem"
                     display="grid"

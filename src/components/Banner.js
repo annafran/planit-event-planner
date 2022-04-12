@@ -26,9 +26,11 @@ const Banner = ({ setSearch }) => {
             <InputGroup
                 pos="absolute"
                 size="lg"
-                w="40%"
-                top="40%"
-                left="30%"
+                w={["20rem", "null", "26rem"]}
+                top="50%"
+                left="50%"
+                ml={["-10rem", "null", "-13rem"]}
+                mt="-1.5rem"
                 zIndex={2}
             >
                 <InputLeftElement
