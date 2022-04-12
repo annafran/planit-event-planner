@@ -40,7 +40,6 @@ const Banner = ({ setSearch }) => {
 
                 <Input
                     placeholder="Search for an event"
-                    leftIcon={<Search2Icon />}
                     variant="filled"
                     _focus={{ bg: "white", borderColor: "white" }}
                     onChange={onChange}
