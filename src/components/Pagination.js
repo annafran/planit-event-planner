@@ -9,7 +9,8 @@ const Pagination = ({ currentPage, eventsPerPage, totalEvents, paginate }) => {
 
     return (
         <ButtonGroup
-            spacing="6"
+            spacing="4"
+            size="xs"
             direction="row"
             mb="3rem"
             w="100%"
