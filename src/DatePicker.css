@@ -1,6 +1,10 @@
-.datePicker {
+.datePickerInput {
     border-radius: 0.375rem 0 0 0.375rem;
     padding-inline-start: 1rem;
     height: 2.5rem;
     width: 100%;
+}
+
+.datePickerPopper {
+    z-index: 100;
 }

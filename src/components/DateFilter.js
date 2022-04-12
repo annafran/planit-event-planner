@@ -14,7 +14,8 @@ const DateFilter = ({ selectedDate, setSelectedDate }) => {
             direction="row"
         >
             <DatePicker
-                className="datePicker"
+                className="datePickerInput"
+                popperClassName="datePickerPopper"
                 selectedDate={selectedDate}
                 todayButton="Today"
                 placeholderText={
