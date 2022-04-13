@@ -113,11 +113,17 @@ const Event = ({ event }) => {
                 <Box>
                     {getMinPrice()} {getCurrency()}
                 </Box>
-                <Box>
-                    {dateToday() === formatEventDate(dates.start.localDate)
-                        ? "Today"
-                        : formatEventDate(dates.start.localDate)}
-                </Box>
+
+                {dateToday() === formatEventDate(dates.start.localDate) ? (
+                    <Box color="steelPink" fontWeight="bold">
+                        Today
+                    </Box>
+                ) : (
+                    <Box color="black">
+                        {formatEventDate(dates.start.localDate)}
+                    </Box>
+                )}
+
                 <Button variant="solid" size="sm" bg="babyBlueEyes" mt="1rem">
                     <LinkOverlay href={url}>Find out more</LinkOverlay>
                 </Button>
