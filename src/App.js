@@ -11,31 +11,17 @@ let geohash = require("ngeohash");
 
 import getEvents from "./services/getEvents";
 import getEventsBySearch from "./services/getEventsBySearch";
+import sortEvents from "./services/sortEvents";
+import filterByDate from "./services/filterByDate";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
-import sortEvents from "./services/sortEvents";
-import filterByDate from "./services/filterByDate";
 
 const colors = {
-    lavenderGray: "#C9CAD9",
-    ghostWhite: "#E7E8EE",
-    lavenderBlue: "#D1D2F9",
     babyBlueEyes: "#A3BCF9",
-    blueGray: "#7796CB",
-    darkBlueGray: "#576490",
-    skyBlueCrayola: "#56CFE1",
-    turquoise: "#72EFDD",
-    unitedNationsBlue: "#5390D9",
-    mediumTurquoise: "#64DFDF",
-    aquamarine: "#80FFDB",
-    frenchViolet: "#6930C3",
-    purple: "#7400B8",
-    slateBlue: "#5E60CE",
     lavenderWeb: "#D8E3FD",
-    razzmatazz: "#EC096F",
     steelPink: "#D91CBC",
     violetWeb: "#EF81DE",
 };
