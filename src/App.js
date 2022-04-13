@@ -22,6 +22,7 @@ import Pagination from "./components/Pagination";
 const colors = {
     babyBlueEyes: "#A3BCF9",
     lavenderWeb: "#D8E3FD",
+    lavenderGray: "#C9CAD9",
     steelPink: "#D91CBC",
     violetWeb: "#EF81DE",
 };
@@ -58,6 +59,26 @@ const App = () => {
     const [sorter, setSorter] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
 
+    const getLocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+        } else {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setCurrentLocation(
+                        geohash.encode(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        )
+                    );
+                },
+                () => {
+                    alert("Unable to retrieve your location");
+                }
+            );
+        }
+    };
+
     useEffect(() => {
         getLocation();
     }, []);
@@ -69,9 +90,7 @@ const App = () => {
             setLoading(false);
         };
 
-        if (currentLocation) {
-            loadData();
-        }
+        loadData();
     }, [currentCountry, currentLocation]);
 
     useEffect(() => {
@@ -97,25 +116,6 @@ const App = () => {
         setCurrentPage(pageNumber);
     };
 
-    const getLocation = () => {
-        if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser");
-        } else {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    setCurrentLocation(
-                        geohash.encode(
-                            position.coords.latitude,
-                            position.coords.longitude
-                        )
-                    );
-                },
-                () => {
-                    alert("Unable to retrieve your location");
-                }
-            );
-        }
-    };
     const renderContent = () => {
         if (loading) {
             return (
@@ -170,7 +170,7 @@ const App = () => {
             <Header />
             <Banner setSearch={setSearch} query={query} />
             <Toolbar
-                onCountryChange={setCurrentCountry}
+                setCurrentCountry={setCurrentCountry}
                 setSorter={setSorter}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}

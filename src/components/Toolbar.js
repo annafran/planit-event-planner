@@ -6,7 +6,7 @@ import Sorter from "./Sorter";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Toolbar = ({
-    onCountryChange,
+    setCurrentCountry,
     setSorter,
     setSelectedDate,
     selectedDate,
@@ -32,7 +32,7 @@ const Toolbar = ({
                     setSelectedDate={setSelectedDate}
                     selectedDate={selectedDate}
                 />
-                <CountrySelector onCountryChange={onCountryChange} />
+                <CountrySelector setCurrentCountry={setCurrentCountry} />
                 <Sorter setSorter={setSorter} />
             </Grid>
         </Box>

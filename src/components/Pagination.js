@@ -19,7 +19,7 @@ const Pagination = ({ currentPage, eventsPerPage, totalEvents, paginate }) => {
             {pageNumbers.map((number) => (
                 <Button
                     bg={
-                        number === currentPage ? "lavenderGray" : "babyBlueEyes"
+                        number === currentPage ? "babyBlueEyes" : "lavenderGray"
                     }
                     key={number}
                     onClick={() => {

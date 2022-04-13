@@ -1,8 +1,8 @@
 import { Select, GridItem } from "@chakra-ui/react";
 
-const CountrySelector = ({ onCountryChange }) => {
+const CountrySelector = ({ setCurrentCountry }) => {
     const onChange = (e) => {
-        onCountryChange(e.target.value);
+        setCurrentCountry(e.target.value);
     };
 
     const countries = [
