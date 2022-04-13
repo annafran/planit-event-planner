@@ -16,7 +16,7 @@ import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
 import Events from "./components/Events";
 import Pagination from "./components/Pagination";
-import sortPrices from "./services/sortPrices";
+import sortEvents from "./services/sortEvents";
 import filterByDate from "./services/filterByDate";
 
 const colors = {
@@ -69,7 +69,7 @@ const App = () => {
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [currentLocation, setCurrentLocation] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [sortByPrice, setSortByPrice] = useState("null");
+    const [sorter, setSorter] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
 
     useEffect(() => {
@@ -92,13 +92,13 @@ const App = () => {
         const loadData = () => {
             const filteredDate = filterByDate(events, selectedDate);
             const searchedEvents = getEventsBySearch(filteredDate, query);
-            const sorted = sortPrices(searchedEvents, sortByPrice);
+            const sorted = sortEvents(searchedEvents, sorter);
             setFilteredEvents([...sorted]);
         };
 
         loadData();
         paginate(1);
-    }, [selectedDate, sortByPrice, query, events]);
+    }, [selectedDate, sorter, query, events]);
 
     const indexOfLastEvent = currentPage * eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -185,8 +185,7 @@ const App = () => {
             <Banner setSearch={setSearch} query={query} />
             <Toolbar
                 onCountryChange={setCurrentCountry}
-                setSortByPrice={setSortByPrice}
-                sortByPrice={sortByPrice}
+                setSorter={setSorter}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
             />
