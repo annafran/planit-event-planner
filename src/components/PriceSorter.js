@@ -16,9 +16,10 @@ const PriceSorter = ({ setSortByPrice, sortByPrice }) => {
                 _focus={{ bg: "violetWeb" }}
                 onChange={onChange}
             >
-                <option value="null">Sort price</option>
-                <option value="low">low to high</option>
-                <option value="high">high to low</option>
+                <option value="null">Sort by:</option>
+                <option value="low">Price: low to high</option>
+                <option value="high">Price: high to low</option>
+                <option value="dates">Date: earliest to latest</option>
             </Select>
         </GridItem>
     );

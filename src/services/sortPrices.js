@@ -1,6 +1,11 @@
+import sortDates from "./sortDates";
+
 const sortPrices = (events, sortByPrice) => {
     if (sortByPrice === "null") {
         return events;
+    }
+    if (sortByPrice === "dates") {
+        return sortDates(events);
     }
     console.log({ sortByPrice, event: events[0] });
     events.sort((eventA, eventB) => {
@@ -12,9 +17,6 @@ const sortPrices = (events, sortByPrice) => {
 
         if (sortByPrice === "high") {
             return bPrice - aPrice;
-        }
-        if (sortByPrice === "null") {
-            return 0;
         }
     });
     return events;
