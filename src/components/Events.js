@@ -7,16 +7,15 @@ const Events = ({ events }) => {
             <Grid
                 templateColumns={[
                     "1fr",
-                    "1fr",
+                    "null",
                     "repeat(2, 1fr)",
-                    "repeat(2, 1fr)",
+                    "null",
                     "repeat(3, 1fr)",
                     "repeat(4, 1fr)",
-                    "repeat(5, 1fr)",
                 ]}
                 gap="2rem"
                 templateRows="auto"
-                w={["90%", "70%", "80%", "70%", "80%"]}
+                w={["90%", "70%"]}
                 ml="auto"
                 mr="auto"
                 justifyItems="center"

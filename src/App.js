@@ -63,7 +63,7 @@ const theme = extendTheme({ colors, styles, breakpoints });
 const App = () => {
     const [events, setEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [eventsPerPage] = useState(10);
+    const [eventsPerPage] = useState(12);
     const [query, setSearch] = useState("");
     const [currentCountry, setCurrentCountry] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);

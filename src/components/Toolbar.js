@@ -22,10 +22,9 @@ const Toolbar = ({
                     "null",
                     "auto 15rem 15rem 15rem",
                     "null",
-                    "null",
                 ]}
                 gap={["1rem", "null", "2rem"]}
-                w={["70%", "60%", "80%", "70%", "80%"]}
+                w={["90%", "70%"]}
                 ml="auto"
                 mr="auto"
                 justifyItems="center"
