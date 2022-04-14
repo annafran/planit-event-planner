@@ -119,9 +119,26 @@ const App = () => {
 
     const addFav = (id) => {
         let array = favorites;
-        array.push(id);
+        let addArray = true;
+        array.map((item, num) => {
+            if (item === id) {
+                array.splice(num, 1);
+                addArray = false;
+            }
+        });
+        if (addArray) {
+            array.push(id);
+        }
         setFavorites(array);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
     };
+
+    useEffect(() => {
+        const getArray = JSON.parse(localStorage.getItem("favorites") || "0");
+        if (getArray !== 0) {
+            setFavorites(getArray);
+        }
+    }, [favorites]);
 
     const renderContent = () => {
         if (loading) {
