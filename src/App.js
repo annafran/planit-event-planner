@@ -129,14 +129,21 @@ const App = () => {
         if (addArray) {
             array.push(id);
         }
-        setFavorites(array);
+        setFavorites([...array]);
         localStorage.setItem("favorites", JSON.stringify(favorites));
+
+        let storage = localStorage.getItem("favItem" + id || "0");
+        if (storage == null) {
+            localStorage.setItem("favItem" + id, JSON.stringify(id));
+        } else {
+            localStorage.removeItem("favItem" + id);
+        }
     };
 
     useEffect(() => {
-        const getArray = JSON.parse(localStorage.getItem("favorites") || "0");
-        if (getArray !== 0) {
-            setFavorites(getArray);
+        const getFavs = JSON.parse(localStorage.getItem("favorites") || "0");
+        if (getFavs !== 0) {
+            setFavorites(getFavs);
         }
     }, [favorites]);
 

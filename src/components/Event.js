@@ -137,7 +137,17 @@ const Event = ({ event, favorites, addFav, key }) => {
                         <LinkOverlay href={url}>Find out more</LinkOverlay>
                     </Button>
                     {favorites.includes(event.id) ? (
-                        <AiFillHeart size="1.5rem" fill="#D91CBC" />
+                        <AiFillHeart
+                            size="1.5rem"
+                            fill="#D91CBC"
+                            onClick={() => {
+                                console.log({
+                                    key: event.id,
+                                    favorites: favorites,
+                                });
+                                addFav(event.id);
+                            }}
+                        />
                     ) : (
                         <AiOutlineHeart
                             size="1.5rem"
