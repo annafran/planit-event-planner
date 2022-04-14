@@ -58,6 +58,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [sorter, setSorter] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
+    const [favorites, setFavorites] = useState([]);
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -116,6 +117,12 @@ const App = () => {
         setCurrentPage(pageNumber);
     };
 
+    const addFav = (id) => {
+        let array = favorites;
+        array.push(id);
+        setFavorites(array);
+    };
+
     const renderContent = () => {
         if (loading) {
             return (
@@ -154,7 +161,11 @@ const App = () => {
 
         return (
             <>
-                <Events events={currentEvents} />
+                <Events
+                    events={currentEvents}
+                    favorites={favorites}
+                    addFav={addFav}
+                />
                 <Pagination
                     currentPage={currentPage}
                     eventsPerPage={eventsPerPage}

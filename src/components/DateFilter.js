@@ -2,7 +2,7 @@ import { Button, GridItem } from "@chakra-ui/react";
 import DatePicker from "react-datepicker";
 import formatFilteredDate from "../utils/formatFilteredDate";
 import "react-datepicker/dist/react-datepicker.css";
-import "../../src/DatePicker.css";
+import "../../src/App.css";
 
 const DateFilter = ({ selectedDate, setSelectedDate }) => {
     return (

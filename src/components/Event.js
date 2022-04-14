@@ -5,12 +5,16 @@ import {
     Badge,
     Image,
     AspectRatio,
+    Stack,
 } from "@chakra-ui/react";
+
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import "../App.css";
 
 import formatEventDate from "../utils/formatEventDate";
 import dateToday from "../utils/dateToday";
 
-const Event = ({ event }) => {
+const Event = ({ event, favorites, addFav, key }) => {
     const {
         name,
         url,
@@ -123,10 +127,30 @@ const Event = ({ event }) => {
                         {formatEventDate(dates.start.localDate)}
                     </Box>
                 )}
-
-                <Button variant="solid" size="sm" bg="babyBlueEyes" mt="1rem">
-                    <LinkOverlay href={url}>Find out more</LinkOverlay>
-                </Button>
+                <Stack
+                    direction="row"
+                    alignItems="center"
+                    mt="1rem"
+                    justifyContent="space-between"
+                >
+                    <Button variant="solid" size="sm" bg="babyBlueEyes">
+                        <LinkOverlay href={url}>Find out more</LinkOverlay>
+                    </Button>
+                    {favorites.includes(event.id) ? (
+                        <AiFillHeart size="1.5rem" fill="#D91CBC" />
+                    ) : (
+                        <AiOutlineHeart
+                            size="1.5rem"
+                            onClick={() => {
+                                console.log({
+                                    key: event.id,
+                                    favorites: favorites,
+                                });
+                                addFav(event.id);
+                            }}
+                        />
+                    )}
+                </Stack>
             </Box>
         </Box>
     );
