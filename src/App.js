@@ -121,63 +121,24 @@ const App = () => {
 
     const addFav = (id) => {
         setFavorites([...favorites, id]);
-        console.log({ fav1: [...favorites, id] });
-        // let array = favorites;
-        // let addArray = true;
-        // favorites.map((item, num) => {
-        //     if (item === id) {
-        //         array.splice(num, 1);
-        //         addArray = false;
-        //     }
-        // });
-        // if (addArray) {
-        //     array.push(id);
-        // }
-        // setFavorites(array);
-        // console.log({ favorites: array });
-        // localStorage.setItem("favorites", JSON.stringify(favorites));
-
-        // let storage = localStorage.getItem("favItem" + id || "0");
-        // if (storage == null) {
-        //     localStorage.setItem("favItem" + id, JSON.stringify(id));
-        // } else {
-        //     localStorage.removeItem("favItem" + id);
-        // }
+        console.log({ favesadd: favorites });
     };
 
     const removeFav = (id) => {
         const index = favorites.indexOf(id);
+        console.log({ index: index });
         setFavorites(favorites.splice(index, 1));
-        // let array = favorites;
-        // let addArray = true;
-        // favorites.map((item, num) => {
-        //     if (item === id) {
-        //         array.splice(num, 1);
-        //         addArray = false;
-        //     }
-        // });
-        // if (addArray) {
-        //     array.push(id);
-        // }
-        // setFavorites(array);
-        // console.log({ favorites: array });
-        // localStorage.setItem("favorites", JSON.stringify(favorites));
-
-        // let storage = localStorage.getItem("favItem" + id || "0");
-        // if (storage == null) {
-        //     localStorage.setItem("favItem" + id, JSON.stringify(id));
-        // } else {
-        //     localStorage.removeItem("favItem" + id);
-        // }
+        console.log({ favesremove: favorites });
     };
 
-    // const getFavs = JSON.parse(localStorage.getItem("favorites") || "0");
-    // useEffect(() => {
-    //     if (getFavs !== 0) {
-    //         setFavorites(getFavs);
-    //         console.log({ getFavs: getFavs });
-    //     }
-    // }, []);
+    useEffect(() => {
+        const loadData = () => {
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+        };
+
+        loadData();
+        paginate(1);
+    }, [favorites]);
 
     useEffect(() => {
         const loadData = () => {
@@ -186,13 +147,12 @@ const App = () => {
                 filterFavorites,
                 favorites
             );
-            console.log({ filteredFaves });
             setFilteredEvents([...filteredFaves]);
         };
 
         loadData();
         paginate(1);
-    }, [filterFavorites]);
+    }, [filterFavorites, favorites]);
 
     const renderContent = () => {
         if (loading) {
