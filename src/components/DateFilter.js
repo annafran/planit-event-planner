@@ -7,8 +7,8 @@ import "../../src/App.css";
 const DateFilter = ({ selectedDate, setSelectedDate }) => {
     return (
         <GridItem
-            colStart={[1, 1, 1, 1, 2]}
-            colEnd={[2, 2, 2, 1, 3]}
+            colStart={[1]}
+            colEnd={[2]}
             w="100%"
             display="flex"
             direction="row"

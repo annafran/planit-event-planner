@@ -5,7 +5,7 @@ const Favorites = ({ setFilterFavorites }) => {
         setFilterFavorites(e.target.value);
     };
     return (
-        <GridItem colStart={[1, 1, 3, 3, 4]} colEnd={[2, 2, 4, 4, 5]} w="100%">
+        <GridItem colStart={[1, 1, 4]} colEnd={[2, 2, 5]} w="100%">
             <Select
                 placeholder="Show:"
                 bg="steelPink"

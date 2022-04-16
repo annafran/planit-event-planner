@@ -19,16 +19,17 @@ const Toolbar = ({
                 templateColumns={[
                     "1fr",
                     "null",
-                    "repeat(3, 1fr)",
+                    "repeat(4, 1fr)",
                     "null",
-                    "auto 15rem 15rem 15rem",
+                    "15rem 15rem 15rem 15rem",
                     "null",
                 ]}
                 gap={["1rem", "null", "2rem"]}
-                w={["90%", "70%"]}
+                w={["90%", "70%", "100%", "100%", "90%"]}
                 ml="auto"
                 mr="auto"
                 justifyItems="center"
+                justifyContent="center"
             >
                 <DateFilter
                     setSelectedDate={setSelectedDate}
