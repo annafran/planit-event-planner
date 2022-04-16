@@ -1,3 +1,5 @@
+import { React, useState } from "react";
+
 import {
     Button,
     LinkOverlay,
@@ -14,7 +16,7 @@ import "../App.css";
 import formatEventDate from "../utils/formatEventDate";
 import dateToday from "../utils/dateToday";
 
-const Event = ({ event, favorites, addFav, key }) => {
+const Event = ({ event, addFav, removeFav }) => {
     const {
         name,
         url,
@@ -24,6 +26,8 @@ const Event = ({ event, favorites, addFav, key }) => {
         _embedded = { venues: [] },
         dates,
     } = event;
+
+    const [isFav, setIsFav] = useState(false);
 
     const getImage = () => {
         if (images.length > 0) {
@@ -136,26 +140,20 @@ const Event = ({ event, favorites, addFav, key }) => {
                     <Button variant="solid" size="sm" bg="babyBlueEyes">
                         <LinkOverlay href={url}>Find out more</LinkOverlay>
                     </Button>
-                    {favorites.includes(event.id) ? (
+                    {isFav ? (
                         <AiFillHeart
                             size="1.5rem"
                             fill="#D91CBC"
                             onClick={() => {
-                                console.log({
-                                    key: event.id,
-                                    favorites: favorites,
-                                });
-                                addFav(event.id);
+                                setIsFav(false);
+                                removeFav(event.id);
                             }}
                         />
                     ) : (
                         <AiOutlineHeart
                             size="1.5rem"
                             onClick={() => {
-                                console.log({
-                                    key: event.id,
-                                    favorites: favorites,
-                                });
+                                setIsFav(true);
                                 addFav(event.id);
                             }}
                         />

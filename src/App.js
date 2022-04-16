@@ -13,6 +13,7 @@ import getEvents from "./services/getEvents";
 import getEventsBySearch from "./services/getEventsBySearch";
 import sortEvents from "./services/sortEvents";
 import filterByDate from "./services/filterByDate";
+import filterByFavorites from "./services/filterByFavorites";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Toolbar from "./components/Toolbar";
@@ -59,6 +60,7 @@ const App = () => {
     const [sorter, setSorter] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
     const [favorites, setFavorites] = useState([]);
+    const [filterFavorites, setFilterFavorites] = useState("all");
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -118,34 +120,79 @@ const App = () => {
     };
 
     const addFav = (id) => {
-        let array = favorites;
-        let addArray = true;
-        array.map((item, num) => {
-            if (item === id) {
-                array.splice(num, 1);
-                addArray = false;
-            }
-        });
-        if (addArray) {
-            array.push(id);
-        }
-        setFavorites([...array]);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
+        setFavorites([...favorites, id]);
+        console.log({ fav1: [...favorites, id] });
+        // let array = favorites;
+        // let addArray = true;
+        // favorites.map((item, num) => {
+        //     if (item === id) {
+        //         array.splice(num, 1);
+        //         addArray = false;
+        //     }
+        // });
+        // if (addArray) {
+        //     array.push(id);
+        // }
+        // setFavorites(array);
+        // console.log({ favorites: array });
+        // localStorage.setItem("favorites", JSON.stringify(favorites));
 
-        let storage = localStorage.getItem("favItem" + id || "0");
-        if (storage == null) {
-            localStorage.setItem("favItem" + id, JSON.stringify(id));
-        } else {
-            localStorage.removeItem("favItem" + id);
-        }
+        // let storage = localStorage.getItem("favItem" + id || "0");
+        // if (storage == null) {
+        //     localStorage.setItem("favItem" + id, JSON.stringify(id));
+        // } else {
+        //     localStorage.removeItem("favItem" + id);
+        // }
     };
 
+    const removeFav = (id) => {
+        const index = favorites.indexOf(id);
+        setFavorites(favorites.splice(index, 1));
+        // let array = favorites;
+        // let addArray = true;
+        // favorites.map((item, num) => {
+        //     if (item === id) {
+        //         array.splice(num, 1);
+        //         addArray = false;
+        //     }
+        // });
+        // if (addArray) {
+        //     array.push(id);
+        // }
+        // setFavorites(array);
+        // console.log({ favorites: array });
+        // localStorage.setItem("favorites", JSON.stringify(favorites));
+
+        // let storage = localStorage.getItem("favItem" + id || "0");
+        // if (storage == null) {
+        //     localStorage.setItem("favItem" + id, JSON.stringify(id));
+        // } else {
+        //     localStorage.removeItem("favItem" + id);
+        // }
+    };
+
+    // const getFavs = JSON.parse(localStorage.getItem("favorites") || "0");
+    // useEffect(() => {
+    //     if (getFavs !== 0) {
+    //         setFavorites(getFavs);
+    //         console.log({ getFavs: getFavs });
+    //     }
+    // }, []);
+
     useEffect(() => {
-        const getFavs = JSON.parse(localStorage.getItem("favorites") || "0");
-        if (getFavs !== 0) {
-            setFavorites(getFavs);
-        }
-    }, [favorites]);
+        const loadData = () => {
+            const filteredFaves = filterByFavorites(
+                events,
+                filterFavorites,
+                favorites
+            );
+            console.log({ filteredFaves });
+            setFilteredEvents([...filteredFaves]);
+        };
+
+        loadData();
+        paginate(1);
+    }, [filterFavorites]);
 
     const renderContent = () => {
         if (loading) {
@@ -187,8 +234,8 @@ const App = () => {
             <>
                 <Events
                     events={currentEvents}
-                    favorites={favorites}
                     addFav={addFav}
+                    removeFav={removeFav}
                 />
                 <Pagination
                     currentPage={currentPage}
@@ -209,6 +256,7 @@ const App = () => {
                 setSorter={setSorter}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
+                setFilterFavorites={setFilterFavorites}
             />
             {renderContent()}
         </ChakraProvider>

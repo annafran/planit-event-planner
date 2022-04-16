@@ -1,7 +1,7 @@
 import Event from "./Event";
 import { Grid, Box } from "@chakra-ui/react";
 
-const Events = ({ events, favorites, addFav }) => {
+const Events = ({ events, addFav, removeFav }) => {
     return (
         <Box m="2rem">
             <Grid
@@ -26,7 +26,7 @@ const Events = ({ events, favorites, addFav }) => {
                             key={event.id}
                             event={event}
                             addFav={addFav}
-                            favorites={favorites}
+                            removeFav={removeFav}
                         />
                     );
                 })}
