@@ -101,12 +101,58 @@ const App = () => {
             const filteredDate = filterByDate(events, selectedDate);
             const searchedEvents = getEventsBySearch(filteredDate, query);
             const sorted = sortEvents(searchedEvents, sorter);
-            setFilteredEvents([...sorted]);
+            const filteredFaves = filterByFavorites(
+                sorted,
+                filterFavorites,
+                favorites
+            );
+            setFilteredEvents([...filteredFaves]);
         };
 
         loadData();
         paginate(1);
-    }, [selectedDate, sorter, query, events]);
+    }, [selectedDate, sorter, query, events, filterFavorites, favorites]);
+
+    const addFav = (id) => {
+        console.log({ faves: favorites });
+        setFavorites([...favorites, id]);
+        console.log({ eventID: id });
+        console.log({ favesadd: favorites });
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    };
+
+    const removeFav = (id) => {
+        const index = favorites.indexOf(id);
+        console.log({ index: index });
+        let removed = favorites.splice(index, 1);
+        console.log({ removed: removed });
+        console.log({ newfaves: favorites });
+        setFavorites(favorites);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    };
+
+    // useEffect(() => {
+    //     const loadData = () => {
+    //         localStorage.setItem("favorites", JSON.stringify(favorites));
+    //     };
+
+    //     loadData();
+    //     paginate(1);
+    // }, [favorites]);
+
+    // useEffect(() => {
+    //     const loadData = () => {
+    //         const filteredFaves = filterByFavorites(
+    //             filteredEvents,
+    //             filterFavorites,
+    //             favorites
+    //         );
+    //         setFilteredEvents([...filteredFaves]);
+    //     };
+
+    //     loadData();
+    //     paginate(1);
+    // }, [filterFavorites, favorites]);
 
     const indexOfLastEvent = currentPage * eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
@@ -118,41 +164,6 @@ const App = () => {
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
-    const addFav = (id) => {
-        setFavorites([...favorites, id]);
-        console.log({ favesadd: favorites });
-    };
-
-    const removeFav = (id) => {
-        const index = favorites.indexOf(id);
-        console.log({ index: index });
-        setFavorites(favorites.splice(index, 1));
-        console.log({ favesremove: favorites });
-    };
-
-    useEffect(() => {
-        const loadData = () => {
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-        };
-
-        loadData();
-        paginate(1);
-    }, [favorites]);
-
-    useEffect(() => {
-        const loadData = () => {
-            const filteredFaves = filterByFavorites(
-                events,
-                filterFavorites,
-                favorites
-            );
-            setFilteredEvents([...filteredFaves]);
-        };
-
-        loadData();
-        paginate(1);
-    }, [filterFavorites, favorites]);
 
     const renderContent = () => {
         if (loading) {
