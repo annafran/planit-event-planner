@@ -115,7 +115,6 @@ const App = () => {
 
     const addFav = (id) => {
         setFavorites([...favorites, id]);
-        // localStorage.setItem("favorites", JSON.stringify(favorites));
     };
 
     useEffect(() => {
@@ -124,19 +123,18 @@ const App = () => {
 
     const removeFav = (id) => {
         const index = favorites.indexOf(id);
-        let removed = favorites.splice(index, 1);
+        favorites.splice(index, 1);
         setFavorites([...favorites]);
-        // localStorage.setItem("favorites", JSON.stringify(favorites));
     };
 
-    // useEffect(() => {
-    //     const loadData = () => {
-    //         localStorage.setItem("favorites", JSON.stringify(favorites));
-    //     };
+    useEffect(() => {
+        const loadData = () => {
+            localStorage.setItem("favorites", JSON.stringify([...favorites]));
+        };
 
-    //     loadData();
-    //     paginate(1);
-    // }, [favorites]);
+        loadData();
+        paginate(1);
+    }, [favorites]);
 
     // useEffect(() => {
     //     const loadData = () => {
