@@ -45,7 +45,6 @@ const getEvents = async (countryCode, geoPoint) => {
         const data = await response.json();
         const events = data._embedded.events;
         const sortedEvents = sortDates(events);
-        console.log({ sortedEvents });
         return sortedEvents;
     } catch (error) {
         console.error(`Could not get events: ${error}`);

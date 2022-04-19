@@ -114,21 +114,19 @@ const App = () => {
     }, [selectedDate, sorter, query, events, filterFavorites, favorites]);
 
     const addFav = (id) => {
-        console.log({ faves: favorites });
         setFavorites([...favorites, id]);
-        console.log({ eventID: id });
-        console.log({ favesadd: favorites });
-        localStorage.setItem("favorites", JSON.stringify(favorites));
+        // localStorage.setItem("favorites", JSON.stringify(favorites));
     };
+
+    useEffect(() => {
+        console.log({ favorites });
+    }, [favorites]);
 
     const removeFav = (id) => {
         const index = favorites.indexOf(id);
-        console.log({ index: index });
         let removed = favorites.splice(index, 1);
-        console.log({ removed: removed });
-        console.log({ newfaves: favorites });
-        setFavorites(favorites);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
+        setFavorites([...favorites]);
+        // localStorage.setItem("favorites", JSON.stringify(favorites));
     };
 
     // useEffect(() => {

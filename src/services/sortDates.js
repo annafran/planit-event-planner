@@ -5,7 +5,6 @@ const sortDates = (events) => {
 
         return aDate - bDate;
     });
-    console.log(events.map((event) => event.dates.start.localDate));
     return events;
 };
 
