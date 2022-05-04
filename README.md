@@ -10,11 +10,11 @@ Events can be filtered by:
 
 ## Screenshot of PLANIT website
 
-![Screenshot of PLANIT website](screenshot-planit-website.png)
+![Screenshot of PLANIT website](screenshot-planit-fullscreen.png)
 
 ## Screenshot of calendar and search functions
 
-![Screenshot of website calendar and search functions](screenshot-planit-search.png)
+![Screenshot of website calendar and search functions](screenshot-planit-searchdate.png)
 
 ## Dependencies
 
