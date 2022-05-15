@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Select, GridItem } from "@chakra-ui/react";
 
 const Sorter = ({ setSorter }) => {
+    const [selected, setSelected] = useState("");
     const onChange = (e) => {
         setSorter(e.target.value);
+        setSelected(e.target.value);
     };
 
     return (
@@ -15,6 +18,7 @@ const Sorter = ({ setSorter }) => {
                 _hover={{ bg: "violetWeb" }}
                 _focus={{ bg: "violetWeb" }}
                 onChange={onChange}
+                value={selected}
             >
                 <option value="low">Price: low to high</option>
                 <option value="high">Price: high to low</option>

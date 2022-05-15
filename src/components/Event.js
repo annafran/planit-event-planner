@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 
 import {
     Button,
@@ -27,7 +27,7 @@ const Event = ({ event, addFav, removeFav }) => {
         dates,
     } = event;
 
-    const [isFav, setIsFav] = useState(false);
+    const [isFav, setIsFav] = useState(event.favorite || false);
 
     const getImage = () => {
         if (images.length > 0) {

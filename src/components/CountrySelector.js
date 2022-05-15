@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Select, GridItem } from "@chakra-ui/react";
 
 const CountrySelector = ({ setCurrentCountry }) => {
+    const [selected, setSelected] = useState("");
+
     const onChange = (e) => {
         setCurrentCountry(e.target.value);
+        setSelected(e.target.value);
     };
 
     const countries = [
@@ -29,6 +33,7 @@ const CountrySelector = ({ setCurrentCountry }) => {
                 _hover={{ bg: "violetWeb" }}
                 _focus={{ bg: "violetWeb" }}
                 onChange={onChange}
+                value={selected}
             >
                 {countries.map((country) => (
                     <option

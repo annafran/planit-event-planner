@@ -6,7 +6,6 @@ const getEvents = async (countryCode, geoPoint) => {
     if (countryCode) {
         try {
             const url = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=${countryCode}&size=100&apikey=${apiKey}`;
-            console.log(url);
             const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);
@@ -21,7 +20,6 @@ const getEvents = async (countryCode, geoPoint) => {
     } else {
         try {
             const url = `https://app.ticketmaster.com/discovery/v2/events.json?geoPoint=${geoPoint}&size=100&apikey=${apiKey}`;
-            console.log(url);
             const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);
@@ -37,7 +35,6 @@ const getEvents = async (countryCode, geoPoint) => {
     //The default if no country is selected and no geolocation is found, is set to "NZ" - New Zealand
     try {
         const url = `https://app.ticketmaster.com/discovery/v2/events.json?countryCode=NZ&size=100&apikey=${apiKey}`;
-        console.log(url);
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status}`);

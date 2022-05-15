@@ -12,6 +12,7 @@ let geohash = require("ngeohash");
 import getEvents from "./services/getEvents";
 import getEventsBySearch from "./services/getEventsBySearch";
 import sortEvents from "./services/sortEvents";
+import mapEvents from "./services/mapEvents";
 import filterByDate from "./services/filterByDate";
 import filterByFavorites from "./services/filterByFavorites";
 import Header from "./components/Header";
@@ -59,7 +60,9 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [sorter, setSorter] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState(
+        JSON.parse(localStorage.getItem("favorites") || "[]")
+    );
     const [filterFavorites, setFilterFavorites] = useState("all");
 
     const getLocation = () => {
@@ -88,6 +91,7 @@ const App = () => {
 
     useEffect(() => {
         setLoading(true);
+        console.log({ currentCountry, currentLocation });
         const loadData = async () => {
             setEvents(await getEvents(currentCountry, currentLocation));
             setLoading(false);
@@ -98,14 +102,11 @@ const App = () => {
 
     useEffect(() => {
         const loadData = () => {
-            const filteredDate = filterByDate(events, selectedDate);
+            const mapped = mapEvents(events, favorites);
+            const filteredDate = filterByDate(mapped, selectedDate);
             const searchedEvents = getEventsBySearch(filteredDate, query);
             const sorted = sortEvents(searchedEvents, sorter);
-            const filteredFaves = filterByFavorites(
-                sorted,
-                filterFavorites,
-                favorites
-            );
+            const filteredFaves = filterByFavorites(sorted, filterFavorites);
             setFilteredEvents([...filteredFaves]);
         };
 
@@ -117,10 +118,6 @@ const App = () => {
         setFavorites([...favorites, id]);
     };
 
-    useEffect(() => {
-        console.log({ favorites });
-    }, [favorites]);
-
     const removeFav = (id) => {
         const index = favorites.indexOf(id);
         favorites.splice(index, 1);
@@ -128,27 +125,8 @@ const App = () => {
     };
 
     useEffect(() => {
-        const loadData = () => {
-            localStorage.setItem("favorites", JSON.stringify([...favorites]));
-        };
-
-        loadData();
-        paginate(1);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
     }, [favorites]);
-
-    // useEffect(() => {
-    //     const loadData = () => {
-    //         const filteredFaves = filterByFavorites(
-    //             filteredEvents,
-    //             filterFavorites,
-    //             favorites
-    //         );
-    //         setFilteredEvents([...filteredFaves]);
-    //     };
-
-    //     loadData();
-    //     paginate(1);
-    // }, [filterFavorites, favorites]);
 
     const indexOfLastEvent = currentPage * eventsPerPage;
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;

@@ -1,8 +1,7 @@
-const filterByFavorites = (events, filterFavorites, favorites) => {
+const filterByFavorites = (events, filterFavorites) => {
     if (filterFavorites === "favorites") {
         return events.filter((event) => {
-            console.log({ favorites: favorites });
-            return favorites.includes(event.id);
+            return event.favorite;
         });
     }
     return events;
