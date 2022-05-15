@@ -107,6 +107,11 @@ const App = () => {
             const searchedEvents = getEventsBySearch(filteredDate, query);
             const sorted = sortEvents(searchedEvents, sorter);
             const filteredFaves = filterByFavorites(sorted, filterFavorites);
+            console.log(
+                sorted.map((event) => {
+                    return { event: event, favorite: event.favorite };
+                })
+            );
             setFilteredEvents([...filteredFaves]);
         };
 

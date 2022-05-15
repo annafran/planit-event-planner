@@ -8,3 +8,4 @@ const filterByFavorites = (events, filterFavorites) => {
 };
 
 export default filterByFavorites;
+// module.exports = filterByFavorites;
