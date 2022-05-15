@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     Image,
     Box,
@@ -9,10 +10,12 @@ import {
 import { Search2Icon } from "@chakra-ui/icons";
 
 const Banner = ({ setSearch }) => {
+    const [typed, setTyped] = useState("");
     const onChange = (e) => {
         if (e.target.value.length === 0 || e.target.value.length >= 2) {
             setSearch(e.target.value.toLowerCase());
         }
+        setTyped(e.target.value);
     };
 
     return (
@@ -43,6 +46,7 @@ const Banner = ({ setSearch }) => {
                     variant="filled"
                     _focus={{ bg: "white", borderColor: "white" }}
                     onChange={onChange}
+                    value={typed}
                 />
             </InputGroup>
         </Box>
