@@ -7,6 +7,7 @@ Events can be filtered by:
 -   Price
 -   Country (the website uses geolocation to load events from the user's current location as a default)
 -   Keyword search
+-   Favourites which are saved on local storage
 
 ## Screenshot of PLANIT website
 
@@ -31,6 +32,7 @@ This project uses the following systems:
 
 -   [Prettier](https://prettier.io/)
 -   [Stylelint](https://stylelint.io/)
+-   [Jest](https://jestjs.io/)
 
 ## Prerequisites
 
