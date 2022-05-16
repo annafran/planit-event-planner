@@ -1,4 +1,4 @@
-const filterByFavorites = require("./services/filterByFavorites");
+import filterByFavorites from "./filterByFavorites";
 
 describe("filterByFavorites", () => {
     it("Should only return events that have been saved as a favorite", () => {
@@ -68,38 +68,40 @@ describe("filterByFavorites", () => {
             },
         ];
         const result = filterByFavorites(events, filterFavorites);
-        const expected = {
-            name: "Wellington Saints v Tuatara",
-            id: "G5e8ZpMUl4Nvh",
-            dates: {
-                start: {
-                    dateTBA: false,
-                    dateTBD: false,
-                    dateTime: "2022-05-16T06:30:00Z",
-                    localDate: "2022-05-16",
-                    localTime: "18:30:00",
-                    noSpecificTime: false,
-                    timeTBA: false,
+        const expected = [
+            {
+                name: "Wellington Saints v Tuatara",
+                id: "G5e8ZpMUl4Nvh",
+                dates: {
+                    start: {
+                        dateTBA: false,
+                        dateTBD: false,
+                        dateTime: "2022-05-16T06:30:00Z",
+                        localDate: "2022-05-16",
+                        localTime: "18:30:00",
+                        noSpecificTime: false,
+                        timeTBA: false,
+                    },
                 },
+                images: [
+                    {
+                        fallback: false,
+                        height: 56,
+                        ratio: "16_9",
+                        url: "https://s1.ticketm.net/dam/a/353/00048445-d264-4a27-956d-075ad5be5353_1315221_RECOMENDATION_16_9.jpg",
+                        width: 100,
+                    },
+                    {
+                        fallback: false,
+                        height: 576,
+                        ratio: "16_9",
+                        url: "https://s1.ticketm.net/dam/a/353/00048445-d264-4a27-956d-075ad5be5353_1315221_TABLET_LANDSCAPE_16_9.jpg",
+                        width: 1024,
+                    },
+                ],
+                favorite: true,
             },
-            images: [
-                {
-                    fallback: false,
-                    height: 56,
-                    ratio: "16_9",
-                    url: "https://s1.ticketm.net/dam/a/353/00048445-d264-4a27-956d-075ad5be5353_1315221_RECOMENDATION_16_9.jpg",
-                    width: 100,
-                },
-                {
-                    fallback: false,
-                    height: 576,
-                    ratio: "16_9",
-                    url: "https://s1.ticketm.net/dam/a/353/00048445-d264-4a27-956d-075ad5be5353_1315221_TABLET_LANDSCAPE_16_9.jpg",
-                    width: 1024,
-                },
-            ],
-            favorite: true,
-        };
+        ];
         expect(result).toEqual(expected);
     });
 });
